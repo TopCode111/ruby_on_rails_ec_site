@@ -62,7 +62,7 @@ gem 'draper', github: 'drapergem/draper'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'slim'
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'clipboard-rails'
 gem "font-awesome-rails"
