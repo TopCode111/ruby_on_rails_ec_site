@@ -1,0 +1,41 @@
+<% context.instance_eval do
+  attributes_table do
+    row t('Seller Name') do |i|
+      i.seller.try(:name) if i.seller.present?
+    end
+    row t('Item Name') do |i|
+      i.try(:name)
+    end
+    row t('Brand') do |i|
+      i.brand.try(:name) if i.brand.present?
+    end
+    row t('Category') do |i|
+      i.category.try(:title) if i.category.present?
+    end
+    row t('Sub Categories') do |i|
+      i.sub_category.try(:name) if i.sub_category.present?
+    end
+    row :price
+    row :shipping_fees
+    row :description
+    row :publish
+    panel t('Sizes') do
+      table_for item.quantities do
+        column t('Size Type') do |q|
+          q.size.size
+        end
+        column t('Quantity'),:quantity
+        column t('Purchased count'), :purchased
+      end
+    end
+    row t('Item Images') do |item|
+      ul class:"item_list" do
+        item.images.each do |img|
+          li do
+            image_tag img.image.url(:thumb)
+          end
+        end
+      end
+    end
+  end
+end %>

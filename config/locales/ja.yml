@@ -1,0 +1,267 @@
+ja:
+  Register: "登録する"
+  Login: "ログイン"
+  #sign up
+  Create an account: "アカウントの作成"
+  Email address: "メールアドレス"
+  Last name: "姓"
+  First name: "名"
+  Password: "パスワード"
+  Password confirmation: "パスワードの確認"
+  Confirm your account info: "下記の内容で登録しますか？"
+  Name: "名前"
+  Back: "もどる"
+  You've successfully registered: "登録が完了しました"
+  Go home: "完了"
+  Sign out: 'サインアウト'
+  #sign in, reset/set password
+  Or: 'または'
+  Forgot your password: 'パスワードをお忘れの方'
+  Send reset password instruction: 'パスワードリセットの送信指示'
+  Set new password: '新しいパスワードを設定する'
+  New password: '新しいパスワード'
+  New password confirmation: '新しいパスワードを確認'
+  Change password: 'パスワードを変更する'
+  #parsley error
+  This email is already exists: 'このメールは既に存在します'
+  This email is invalid: 'このメールは無効です'
+  #seller
+  Follow: 'フォローする'
+  Following: 'フォロー中'
+  #admin items
+  Item Name: '項目名'
+  Seller Name: '売り手名'
+  Item Price: '商品価格'
+  Size: 'サイズ'
+  Brand: 'ブランド'
+  Unpublish: '無駄な'
+  Publish: '公開する'
+  Category Title: 'カテゴリタイトル'
+  Sub Categories: 'サブカテゴリー'
+  Seller: 'バイヤー'
+  Category: "カテゴリー"
+  Size: 'サイズ'
+  Size Type: 'サイズタイプ'
+  Select Size: 'サイズを選択'
+  Quantity: '量'
+  Image: '画像'
+  Seller Name: '売り手名'
+  Item Images: 'アイテム画像'
+  Sizes: 'サイズ'
+  Picker: 'ピッカー'
+  id: 'イド'
+  Description: '説明'
+  Photo: "写真"
+  Hide: '隠す'
+  instagram_url: "instagram"
+  twitter_url: "twitter"
+  line_url: "line"
+  facebook_url: "facebook"
+  #search
+  Keyword: 'キーワード'
+  Brand name: 'ブランド名'
+  Free shipping: '送料無料'
+  Search: '絞り込む'
+  Sub Category: 'サブカテゴリー'
+  Search by brand name / keyword: 'ブランド名・キーワードで探す'
+  #items
+  No items found: '項目は見つかりませんでした'
+  remaining: '残り'
+  items: '個'
+  Related List: '関連する商品'
+  Add to Cart: 'カートに入れる'
+  tax included: '(税込み)'
+  #pages
+  See More: 'もっと見る'
+  #breadcrumbs
+  Pick Top: "Pickトップ"
+  Search_Items: "検索"
+  Checkout: "チェックアウト"
+  Shipping address: "お届先住所の登録"
+  Payment Method: "お支払い方法の登録"
+  #review
+  Product review: '商品レビュー'
+  Post: '投稿する'
+  Select a rating: '評価を選択してください'
+  Comment: 'この商品の気に入った点を記してください'
+  Item successfully reviewed: 'アイテムが正常にレビュー'
+  You cannot review this item: 'この商品を見直すことはできません'
+  #buyer
+  Logout: 'ログアウト'
+  Shipping address / payment: '配送先住所・お支払い'
+  Shipping address: 'お届け先住所'
+  Update: '更新する'
+  Create: '作成する'
+  MyPage: 'マイページ'
+  MyPage TOP: 'マイページTOP'
+  TOP: 'マイページTOP'
+  Purchase histories: '購入履歴'
+  Address/Payment: '配送先住所・お支払い'
+  Payment method: 'お支払い方法'
+  Register your shipping address: 'お届け先住所の登録'
+  Zip code: '郵便番号'
+  Address: '住所'
+  Prefectures: '都道府県'
+  Address line 1: '住所'
+  Address line 2: '建物名／部屋番号'
+  Register payment method: 'お支払い方法の登録'
+  Required : '必須'
+  Security code: 'セキュリティコード'
+  Expiration date: '有効期限'
+  Card number: 'カード番号'
+  Confirm: '確認する'
+  m: '月'
+  y: '年'
+  #seller
+  Select item: 'セレクトアイテム'
+  #application_controller(after_sign_in)
+  You are unauthorized to login: 'あなたはログインが許可されていません'
+  #purchase_history
+  Purchase History: '購入履歴一覧'
+  Purchase date: '購入日'
+  Delivery address: 'お届け住所'
+  Product Review: '商品レビューを書く'
+  Purchase Again: '再度購入する'
+  #footer
+  Privacy policy: 'プライバシーポリシー '
+  Terms and conditions: '特定商取引法に基づく表記'
+  #checkout
+  Your item: 'ご注文の商品'
+  Price: '価格'
+  Shipping fee: '送料'
+  Total: 'お支払い合計'
+  (tax included): '(税込み)'
+  Items in cart: 'ご注文の商品'
+  Confirm input contents: '入力内容確認'
+  Payment Method is not registered: 'お支払い方法が登録されていません'
+  The addressee address is not registered: 'お届け先住所が登録されていません。'
+  ※ You can not change payment after order confirmation: '※注文確定後のお支払いの変更はできません'
+  Confirm order: '注文を確定する'
+  Contents of order: 'ご注文の内容'
+  Payment is complete: 'お支払いが完了しました'
+  The payment procedure was successfully completed: 'お支払い手続きは正常に完了しました。'
+  Or you may send the order contents by e-mail! Bye!: 'メールで注文内容を送ったりするかもよ！あばよ！'
+  Done: '完了'
+  Checkout Success : 'チェックアウトの成功'
+  You have already ordered this item: 'あなたはすでにこのアイテムを注文しています'
+  Failed to create order: '注文の作成に失敗しました'
+  You are not allowed to perform this action: 'この操作を実行することはできません'
+  Delete: '削除する'
+  There are no items in cart: "カートに商品がありません"
+  Continue Shopping: "ショッピングを続ける"
+  Continue: 'ショッピングを続ける'
+  View Cart: 'カートを見る'
+  #admin
+  Total Price: '合計金額'
+  Status: '状態'
+  User Name: 'ユーザー名'
+  Add more sizes: '他のサイズを追加する'
+  Add more images: '画像を追加'
+  remove: '除去する'
+  Sold Out: '売り切れ'
+  Item successfully updated: 'アイテムが更新されました'
+  Please Select Buyer: '買い手を選択してください'
+  Please Select Brand: 'ブランドを選択してください'
+  Change Password: 'パスワードを変更する'
+  Seller Profile: "売り手のプロフィール"
+  Billing Address: "請求先住所"
+  #flash message
+  Successfully, password updated: '正常にパスワードが更新されました'
+  # follow
+  followings: 'フォロー中バイヤーの商品一覧'
+  Buyer during follow: 'フォロー中バイヤー'
+  Following buyers' product list: 'フォロー中バイヤーの商品一覧'
+  Recommended buyers: 'おすすめのバイヤー'
+  Related items: '関連する商品'
+  No followings found: "フォローが見つかりません"
+  #comment
+  Comment: 'コメント'
+  Comment to this product: 'この商品へのコメント'
+  Reply: '返信する'
+  View more Reply: 'もっと見る'
+  Purchased count: '購入数'
+  activerecord:
+    models:
+      admin_user: "管理者"
+      brand: "ブランド"
+      category: "カテゴリー"
+      item: "商品"
+      seller: "バイヤー"
+      size: "サイズ"
+      sub category: 'サブカテゴリ'
+      Quantity: 'サイズ'
+      user: 'ユーザー'
+    attributes:
+      brand:
+        id: "イド"
+        name: "名前"
+        created_at: "作成日"
+        updated_at: "更新日"
+      seller:
+        id: "イド"
+        password: 'パスワード'
+        password_confirmation: 'パスワードの確認'
+        name: "名前"
+        email: "メールアドレス"
+        hide: '隠す'
+        num_of_items: 'アイテム数'
+        photo: "写真"
+      size:
+        id: "イド"
+        size: "サイズ"
+        created_at: "作成日"
+        updated_at: "更新日"
+      admin_user:
+        id: "イド"
+        email: '郵便物'
+        current_sign_in_at: "現在のサインイン"
+        sign_in_count: "サインインカウント"
+        created_at: "作成者："
+      item:
+        id: 'イド'
+        category: 'カテゴリー'
+        seller: '売り手'
+        sub category: 'サブカテゴリ'
+        sizes: 'サイズ'
+        name: '名前'
+        price: '価格'
+        shipping_fees: '送料'
+        description: '説明'
+        publish: '公開する'
+      category:
+        id: 'イド'
+        title: 'タイトル'
+      user:
+        id: 'イド'
+        email: '郵便物'
+      seller_profile:
+        hide: '隠す'
+        name: "名前"
+        description: "説明"
+        instagram_url: "インスタグラム"
+        twitter_url: "ツイッター"
+        line_url: "ライン"
+        facebook_url: "フェイスブック"
+        photo: "写真"
+      purchase_order:
+        id: 'イド'
+        sum_price: '価格'
+        sum_shipping_fees: '送料'
+        total_price: '合計金額'
+        status: '状態'
+        stripe_charge_id: 'ストライプチャージID'
+        purchase_date: '購入日'
+        buyer: 'ユーザー'
+      sub_category:
+        name: '名前'
+      comment:
+        id: 'イド'
+        user: 'ユーザー'
+        body: 'コメント'
+      order_item:
+        id: 'イド'
+        size: 'サイズ'
+        unit_price: '価格'
+        unit_shipping_fees: '送料'
+        total_price: '合計金額'
+        order_status: '状態'

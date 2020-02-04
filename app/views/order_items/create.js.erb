@@ -1,0 +1,2 @@
+$('.js_cart_count').text(<%= current_purchase_order.decorate.order_item_count(current_user).to_s %>);
+$("#cart_modal").modal("show");

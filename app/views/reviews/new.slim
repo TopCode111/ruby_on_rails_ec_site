@@ -1,0 +1,43 @@
+=title "レビューを残す"
+=meta_description
+.container.m-20
+  =render partial: 'shared/search-form'
+  -breadcrumb :review, @order, @item
+  =render partial: 'shared/bread_crumb'
+.container.mt-4
+  .row
+    .col-md-3.d-none.d-md-block.col-0
+      .sidebar
+        = render 'buyers/buyer_side_bar'
+        .category__type.pt-3.pb-3
+    .col-md-9.ml-sm-auto.col-12
+      main.category__container.items
+        h1.pb-4 = t('Product review')
+        -if @order.reviewed
+          .text-danger.mb-2
+            | お客様はすでにレビューされています。
+        .card
+          .card-body.bg-offwhite.review__info
+            .d-flex.item-img
+              -if @item.images.present?
+                =image_tag @item.first_image.url(:xsmall), class: 'avater-img rounded'
+              -else
+                = image_tag "default_review_image.png", class: "img-fluid"
+              .flex-column.item-content
+                h3.pl-3
+                  =link_to @item.name, item_path(@item)
+                h3.pl-3
+                  =number_to_currency(@item.price, unit: "¥", format: "%u%n", precision: 0)
+        .rating.pt-4
+        = form_for(@review, :html => {"data-parsley-validate" => true}) do |f|
+          = f.select(:rating , options_for_select([1,2,3,4,5]),{prompt: t("Select a rating")}, {class: "form-control", required: true})
+          = f.text_area :description, class: "form-control mt-2",placeholder: t("Comment"), size:"25x4", 'data-parsley-maxlength'=>1000
+          = f.hidden_field :item_id, value: @item.id
+          = f.hidden_field :seller_id, value: @item.seller.id
+          = f.hidden_field :buyer_id, value: current_user.id
+          = f.hidden_field :order_id, value: @order.id
+          .actions.float-md-right.col-md-6.pl-0.pr-0
+            = f.submit t("Post"), class: 'btn btn-primary btn-block mt-3 btn-lg', data:{disable_with: t("Post")}
+
+
+

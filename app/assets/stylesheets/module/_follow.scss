@@ -1,0 +1,23 @@
+.follower{
+  &__select{
+    .dropdown-toggle{
+      padding: 5px !important;
+      width: 100%;
+      height: 36px;
+      @extend %form-control-btn;
+      @extend %select-down-icon;
+      &:after{
+        border: none;
+      }
+      &:focus{
+        outline: none;
+        box-shadow: unset !important;
+      }
+    }
+  }
+  &__modal{
+    .modal-body{
+      padding: 0 24px;
+    }
+  }
+}

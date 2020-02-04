@@ -1,0 +1,24 @@
+.h-buyer{
+  .display-1{
+    font-size: 40px;
+  }
+  .item{
+    margin-bottom: $space-xm;
+    @include media-breakpoint-down(sm){
+      margin-bottom: $space-s + 4;
+    }
+  }
+  .btn{
+    margin-top: $space-xm;
+    @include media-breakpoint-down(sm){
+      margin-top: 0;
+    }
+  }
+}
+.famous-buyer{
+  .custom-col__content{
+    @include media-breakpoint-down(sm){
+      margin-bottom: $space-xm + $space-xm;
+    }
+  }
+}

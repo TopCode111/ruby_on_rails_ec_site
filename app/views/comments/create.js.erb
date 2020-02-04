@@ -1,0 +1,5 @@
+$('.comment').html("<%= escape_javascript render partial: '/items/comment', locals: {item: @item, all_comments: @all_comments} %>");
+<% if @all_comments.count >= 10%>
+  var url = "/items/"+<%=@item.id%>+"?" + $('.right-paginate').attr('href').split('&')[1]
+  $('.right-paginate').attr('href', url);
+<%end%>

@@ -1,0 +1,8 @@
+- if brands.present?
+  div class="#{params[:brand_name].present? ? "category__type pt-4 " : "category__type mt-4 pt-4"}"
+    h1
+      = t('Brand')
+    - brands.each do |brand|
+      ul.list-unstyled.mt-3
+        li.category__subtitle.mb-3.sidebar_active
+          = link_to brand.name, brand_path(brand.name), class: 'text-dark'

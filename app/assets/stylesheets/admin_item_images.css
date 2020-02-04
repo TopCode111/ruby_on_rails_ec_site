@@ -1,0 +1,26 @@
+ul.item_list li{
+  display: inline-block;
+}
+
+li#user_submit_action {
+    list-style: none;
+}
+.item_fieldset {
+  padding: 0 20px 0 20px;
+}
+.add_more_btn {
+  margin-bottom: 20px;
+}
+#quantities > .nested-fields > fieldset.inputs > ol,
+#images > .nested-fields > fieldset.inputs > ol,
+.sub_categories > fieldset.inputs > ol {
+  border: 1px dashed lightgrey;
+  padding: 15px;
+  margin-bottom: 5px;
+}
+#quantities .item_fieldset,
+#images > .item_fieldset {
+  padding: 0;
+}
+
+

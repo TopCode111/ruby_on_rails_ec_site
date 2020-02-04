@@ -1,0 +1,117 @@
+select{
+  @include reset_select();
+  @extend .form-control;
+}
+//Authentication
+.authentication{
+  padding: 80px 0;
+  background: $offwhite;
+  min-height: 600px;
+  @media(max-width: 767px){
+    padding: 0;
+    background: $white;
+  }
+  &__container{
+    max-width: 415px;
+    .card{
+      border: none;
+    }
+    .card-body{
+      padding: 28px 40px;
+      @media(max-width: 767px){
+        padding: 16px;
+      }
+    }
+  }
+  .form-control{
+    height: 44px;
+  }
+  .btn{
+    height: 56px;
+    font-weight: 600;
+    line-height: 2.5;
+  }
+}
+.search{
+  &__field{
+    width: calc(100% - 200px);
+    @media(max-width: 767px){
+      width: 100%;
+    }
+    .form-control{
+      background: asset_url('search-icon.png') center no-repeat $offwhite;
+      background-position: 12px;
+      padding-left: 32px;
+      @media(max-width: 767px){
+        border-radius: 40px;
+        height: 36px;
+      }
+    }
+  }
+  &__categories,
+  &__brand{
+    .dropdown-toggle{
+      width: 132px;
+      height: 36px;
+      border: 1px solid $concrete;
+      border-radius: $border-radius;
+      color: $optgray;
+      background: $offwhite asset-url('arrow-icon.png') no-repeat;
+      background-position: 95%;
+      &:after{
+        border: none;
+      }
+    }
+  }
+
+}
+
+//Registration confirming
+.registration{
+  &__confirming{
+    h1,label{
+      color: $dark;
+    }
+    h2{
+      color: $secondary;
+    }
+    label{
+      font-size: $h2-font-size;
+    }
+  }
+}
+
+.button_margin_fix {
+  margin-right: 0 !important;
+}
+
+//Form validation according to branding
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error{
+  color: $secondary;
+  background-color: $lightgray;
+  border-color: $concrete;
+}
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success{
+  color: $dark;
+  background-color: transparent;
+  border-color: $primary;
+}
+.parsley-errors-list{
+  color: $red;
+  font-size: $h4-font-size;
+  margin-top: 4px;
+}
+
+/*Hide Up and Down Arrows on number input  fields*/
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}

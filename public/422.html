@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PickOfficial 422</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    .main-content{
+      color: #888;
+      position: fixed;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .status-code {
+      font-size: 80px;
+    }
+    .status-message{
+      width: 320px;
+    }
+  </style>
+</head>
+
+<body >
+  <%= render
+  <div class="main-content">
+    <div class="status-code">422</div>
+    <div class="status-message">
+      <p>The page you are looking for could not be located</p>
+      <p>The page you are looking for may have been deleted, renamed, or temporarily unavailable.If the problem persists contact the website administrator.</p>
+    </div>
+
+  </div>
+</body>
+</html>

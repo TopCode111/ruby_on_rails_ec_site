@@ -1,0 +1,29 @@
+= title "マイページ"
+= meta_description
+= render "shared/search_bar"
+.container.mt-4
+  .row
+    .col-md-3.d-none.d-md-block.col-0
+      .sidebar
+        = render 'buyers/buyer_side_bar'
+        .category__type.pt-3.pb-3
+          = link_to t("Logout"), destroy_user_session_path, method: :delete
+    .col-md-9.ml-sm-auto.col-12
+      .category__container.items
+        h1.pb-4 = t('MyPage TOP')
+        .card
+          .card-body.bg-offwhite.buyer__info
+            div
+              = image_tag "buyer_default_avatar.png", class: "rounded-circle"
+              h2.pt-2.font-weight-bold.text-center
+                 = @buyer.full_name
+        .d-flex.pb-4.pt-4.align-items-baseline
+          h1.flex-grow-1 =t('Purchase histories')
+          = link_to t("Confirm"), purchase_history_path
+        .d-flex.category__type.pt-4.pb-4.align-items-baseline
+          h1.flex-grow-1 =t('Address/Payment')
+          = link_to t("Confirm"), address_payments_path
+        .d-block.d-md-none
+          .category__type.pt-4
+            = render 'buyers/buyer_side_bar'
+

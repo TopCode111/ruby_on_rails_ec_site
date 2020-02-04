@@ -1,0 +1,18 @@
+#cart_modal.modal.hide.fade.cart-modal aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1"
+  .cart
+    .modal-dialog
+      .modal-content
+        .modal-body
+          .cart__modal-content
+            .cart__modal-title カートの商品を追加しました
+            .cart__content このまま購入に進む方は、「カートを見る」を押してください
+            .row
+              .col-md-6.col-sm-12.mt-3
+                = link_to t('Continue'), item_path(@item), class: 'btn btn-outline-primary btn-block'
+              .col-md-6.col-sm-12.mt-3
+                = link_to t('View Cart'), cart_path, class: 'btn btn-primary btn-block'
+          - if @cart_related_items.present?
+            hr
+            .cart__related_title.mb-4 こちらの商品もチェックしてみませんか？
+            .col-spacing-sm
+              = render partial:'order_items/cart_suggestion_item_list', locals: {items: @cart_related_items}

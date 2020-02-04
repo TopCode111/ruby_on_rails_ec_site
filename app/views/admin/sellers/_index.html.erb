@@ -1,0 +1,23 @@
+<% context.instance_eval do
+  column :id
+  column :email
+  column :name do |c|
+    c.profile.try(:name)
+  end
+  column do |c|
+    if c.hide
+      if params[:controller] == "admin/sellers"
+        link_to t("List"), "/list/#{c.id}"
+      elsif params[:controller] == "seller_admins/sellers"
+        link_to t("List"), "/list_seller/#{c.id}"
+      end
+    else
+      if params[:controller] == "admin/sellers"
+        link_to t("Unlist"), "/unlist/#{c.id}"
+      elsif params[:controller] == "seller_admins/sellers"
+        link_to t("Unlist"), "/unlist_seller/#{c.id}"
+      end
+    end
+  end
+  actions
+end %>

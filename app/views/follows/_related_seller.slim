@@ -1,0 +1,10 @@
+.col-spacing-sm__item-list
+  .row.row-items-5.seller__similar
+    -@related_sellers.each do |seller|
+      .col-2dot4.col-md-2dot4
+        .text-center
+          =link_to seller_profile_path(seller) do
+            .item__image
+              =image_tag seller.decorate.avatar, class:"rounded-circle", width: '60', height: '60'
+            h4.pt-2.text-primary
+              = seller.profile.name

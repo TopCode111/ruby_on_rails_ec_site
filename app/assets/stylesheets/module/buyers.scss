@@ -1,0 +1,23 @@
+// Place all the styles related to the Buyers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.buyer{
+  &__info {
+    height: 176px;
+    position: relative;
+    div{
+      @extend %center;
+    }
+  }
+  &__address {
+  	background-color: #F8F8F8 ;
+    padding: $space-xm;
+  }
+}
+.headline_color{
+  color: #888888;
+  a{
+    color: #888888;
+  }
+}
+

@@ -1,0 +1,52 @@
+p 
+  | #{@last_name}#{@first_name} 様
+p
+  |このたびは、「Pick」をご利用いただきありがとうございます。
+p 
+  |お客様のご注文を以下の内容で承りました。
+p
+  |ご確認いただき、内容に誤りなどございましたらお知らせください。
+p
+  |_______________________________________________________________
+P
+  |■ご注文内容■
+p
+  |<ご注文番号>
+  span
+    strong  #{@order.id}
+p 
+  |<ご注文日時>
+  span
+    strong  #{@order.purchase_date.strftime('%c')}
+p
+  |<ご注文内容>
+  span
+    strong  #{@order.order_items.map {|o| o.item.name}}
+p
+  |■注文者情報■
+p
+  |<お名前>
+  span
+    strong  #{@buyer.full_name}
+p
+  |<ご住所> 
+  span
+    strong  #{@prefecture+@address_1+@address_2}
+p
+  |<メールアドレス> 
+  span
+    strong  #{@buyer.email}
+p
+  |■商品のお届け先■
+p
+  |<お名前>
+  span
+    strong  #{@buyer.full_name}
+p
+  |<ご住所> 
+  span
+    strong  #{@prefecture+@address_1+@address_2}
+p
+  |_______________________________________________________________
+p
+  |ご不明な点などがございましたら、お気軽にお知らせください。

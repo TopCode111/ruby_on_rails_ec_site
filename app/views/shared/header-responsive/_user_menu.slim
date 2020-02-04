@@ -1,0 +1,15 @@
+- if current_user.present?
+  .category.slide-menu__category.mb-3
+    =link_to buyer_mypage_path do
+      .card
+        .card-header
+          = t('MyPage TOP')
+    =link_to purchase_history_path do
+      .card
+        .card-header
+          = t('Purchase histories')
+    =link_to address_payments_path do
+      .card
+        .card-header
+          = t('Address/Payment')
+

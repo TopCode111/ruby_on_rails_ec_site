@@ -1,0 +1,21 @@
+.col-md-3.d-none.d-md-block.col-0
+  .sidebar
+    - if params[:sub_category_name].present? || params[:category_name].present?
+      h1.pb-4.category__title
+        = "#{params[:category_name]}"
+      = render partial:'items/category', locals: { categories: @categories }
+      = render partial:'items/brand', locals: {brands: @brands}
+    - elsif params[:brand_name].present?
+      h1.pb-4.category__title
+        = "#{params[:brand_name]}"
+      = render partial:'items/brand', locals: {brands: @brands}
+      = render partial:'items/category', locals: { categories: @categories }
+      = render partial: 'items/seller',locals: {sellers: @sellers}
+    - elsif  params[:controller] == "users" &&  params[:seller_id].present?
+      = render partial:'users/category', locals: { categories: @categories }
+      = render partial:'items/brand', locals: {brands: @brands}
+      = render partial: 'items/seller',locals: {sellers: @sellers}
+
+    - else
+      = render partial:'items/category', locals: { categories: @categories }
+      = render partial:'items/brand', locals: {brands: @brands}

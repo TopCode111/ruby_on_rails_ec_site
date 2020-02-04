@@ -1,0 +1,7 @@
+<% if @comment.present? %>
+  $('.comment').html("<%= escape_javascript render partial: '/items/comment', locals: {item: @comment.commentable, all_comments: @all_comments} %>"); 
+  $(".comment-one-reply-<%=@comment.id%>").hide();
+  $('.js-threads').hide();
+  $(".comment-<%=@comment.id%>").show();
+  $(".comment-<%=@comment.id%>").html("<%= escape_javascript render partial: '/items/child_comment', locals: {item: @comment.commentable, comment: @comment} %>");
+<%end%>

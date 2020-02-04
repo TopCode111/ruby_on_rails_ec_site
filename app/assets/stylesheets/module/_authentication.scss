@@ -1,0 +1,33 @@
+// Custom CSS for  line-text-line
+.split  {
+  overflow: hidden;
+  text-align: center;
+  font-weight: bold;
+  &::before,
+  &:after {
+    background-color: $concrete;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+  &:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+  &:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
+}
+
+.back-link {
+  cursor: pointer;
+  color: #754DEA;
+}
+.success-signup {
+  margin-top: 140px;
+  margin-bottom: 140px;
+}

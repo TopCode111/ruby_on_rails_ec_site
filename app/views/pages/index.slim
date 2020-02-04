@@ -1,0 +1,114 @@
+= title
+= meta_description
+.container.m-20
+  = render partial: 'shared/search-form'
+  .hero
+    .row
+      .col-12.col-md-6
+        .hero__main-text.text-center
+          h1 Why, Pick?
+          small.d-none.d-md-block dummy text toka nantoka dummy text toka nantoka
+      .col-12.col-md-6
+        .hero__image
+          =image_tag "hero-img.png", class: 'd-none d-md-block img-fluid'
+          =image_tag "hero-m-img.png", class: 'd-block d-md-none img-fluid pl-3 pr-3'
+        .hero__sub-text
+          h2.mb-0 Pick Influencer
+          h1 Furukawa yuki
+  .offer.pt-60.pb-60.custom-col.pt-4.pb-4
+    .row
+      section.col-md-4.col-12
+        .custom-col__content
+          .offer__image.text-center
+            =image_tag "offer_3.png"
+          .offer__title.text-center
+            h1.pt-4.pb-4.mb-0 抜群のセンスで買い付け
+          p.offer__info
+            | Pick Official Buyerがセレクトした商品はおしゃれで可愛いものだけ！ 
+            | 全てがトレンドの商品のためここで買えば間違いなし！
+      section.col-md-4.col-12
+        .custom-col__content
+          .offer__image.text-center
+            =image_tag "offer_1.png"
+          .offer__title.text-center
+            h1.pt-4.pb-4.mb-0 LIVE配信で商品を紹介
+          p.offer__info
+            | Pick Official Buyerがセレクトした商品はおしゃれで可愛いものだけ！ 
+            | 全てがトレンドの商品のためここで買えば間違いなし！
+      section.col-md-4.col-12
+        .custom-col__content
+          .offer__image.text-center
+            =image_tag "offer_2.png"
+          .offer__title.text-center
+            h1.pt-4.pb-4.mb-0 商品販売は期間限定
+          p.offer__info.pb-0
+            | Pick Official Buyerがセレクトした商品はおしゃれで可愛いものだけ！ 
+            | 全てがトレンドの商品のためここで買えば間違いなし！
+
+  -if @famous_sellers.present?
+    hr.mb-0.mt-0
+    .h-buyer.pt-60.pb-60.custom-col.pt-4.pb-4.famous-buyer
+      .h-buyer__title.text-center.mb-5
+        .display-1.text-dark Famous Buyer
+        h1.font-weight-bold 人気バイヤー
+      .row
+        -@famous_sellers.first(3).each do |seller|
+          section.col-md-4
+            .custom-col__content
+              .d-flex.justify-content-center.mb-4
+                =link_to "/seller/#{seller.id}" do
+                  -if seller.photo.present?
+                    =image_tag seller.photo.url(:thumb), class:"img-size-seller rounded-circle"
+                  -else
+                    =image_tag "default_avatar.png",class: " img-size-seller rounded-circle"
+              p
+                |Pick Official Buyerがセレクトした商品はおしゃれで可愛いものだけ！ 全てがトレンドの商品のためここで買えば間違いなし！
+
+  -if @popular_items.present?
+    hr.mb-0.mt-0
+    .h-buyer.pt-60.pb-60.pt-4.pb-4
+      .h-buyer__title.text-center.mb-5
+        .display-1.text-dark Popular Items
+        h1.font-weight-bold 人気商品
+      .col-spacing-sm__item-list
+        .row.row-items-5
+          -@popular_items.each do |item|
+            .col-2dot4.col-md-2dot4
+              .item
+                =link_to item_path(item) do
+                  .item__image
+                    -if item.images.present?
+                      =image_tag item.first_image.url(:medium), class: 'img-fluid'
+                    -else
+                      =image_tag "default_item_image.png", class: 'img-fluid'
+                  .item__name.pt-2
+                    =  truncate("#{item.name}")
+                  .item__price
+                    =number_to_currency(item.price, unit: "¥", format: "%u%n", precision: 0)
+        .m-auto.col-md-4
+          = link_to t("See More"), search_path,class:"button btn btn-primary btn-block btn-lg"
+
+  -if @newest_items.present?
+    hr.mb-0.mt-3
+      .h-buyer.pt-60.pt-4.pb-4
+        .h-buyer__title.text-center.mb-5
+          .display-1.text-dark Newest Items
+          h1.font-weight-bold 新着商品
+        .col-spacing-sm__item-list
+          .row.row-items-5
+            -@newest_items.each do |item|
+              .col-2dot4.col-md-2dot4
+                .item
+                  = link_to item_path(item) do
+                    .item__image
+                      -if item.images.present?
+                        =image_tag item.first_image.url(:medium), class: 'img-fluid'
+                      -else
+                        =image_tag "default_item_image.png", class: 'img-fluid'
+                    .item__name.pt-2
+                      = truncate("#{item.name}")
+                    .item__price
+                      =number_to_currency(item.price, unit: "¥", format: "%u%n", precision: 0)
+          .m-auto.col-md-4
+            = link_to t("See More"), search_path, class: ' btn btn-primary btn-block btn-lg '
+

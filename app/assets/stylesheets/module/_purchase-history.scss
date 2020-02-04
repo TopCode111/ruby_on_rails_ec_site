@@ -1,0 +1,36 @@
+.purchase{
+  .btn{
+    padding: 0.41rem 0.5rem;
+  }
+  hr{
+    margin: 20px 0;
+  }
+  &__history-info{
+    border-bottom: 1px solid $lightgray;
+    padding: 20px 0;
+    &:last-child{
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    &:first-child{
+      padding-top: 0;
+    }
+  }
+  &__history-btns{
+    padding-left: 30px;
+  }
+  @include media-breakpoint-down(md){
+    .purchase{
+      &__history-btns{
+        padding-left: 0px;
+      }
+    }
+    .media{
+      padding-bottom: $space-s;
+      &-body{
+        padding-right: 0px;
+      }
+    }
+  }
+}
+

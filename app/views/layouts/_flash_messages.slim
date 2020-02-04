@@ -1,0 +1,15 @@
+- if flash[:notice]
+  .container.flash-ahead.m-20
+    .alert.js-alert-message.alert-message.alert-success.alert-dismissible.fade.show
+      button.close data-dismiss="alert" type="button"  &times;
+      strong = flash[:notice]
+- elsif flash[:alert]
+  .container.flash-ahead.m-20
+   .alert.alert-danger.js-alert-message.alert-message.alert-dismissible.fade.show
+      button.close data-dismiss="alert" type="button"  &times;
+      strong = flash[:alert]
+- elsif  flash[:error]
+  .container.flash-ahead.m-20
+    .alert.alert-error.js-alert-message.alert-message.alert-danger.alert-dismissible.fade.show
+      button.close data-dismiss="alert" type="button"  &times;
+      strong = flash[:error]

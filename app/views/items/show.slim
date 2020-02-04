@@ -1,0 +1,109 @@
+= title "#{@item.name+"-"+@item.seller.name}"
+= meta_description @item.name
+- breadcrumb @item
+= render "shared/search_bar"
+.container.item
+  .row.item__detail
+    .col-sm-8.col-12.item__image-col
+      .item__img-collection
+        .photor
+          .photor__viewport
+            .photor__viewportLayer
+              - @item.images.each do |img|
+                =image_tag img.image.url(:large), data: { thumb: image_path(img.image.url(:small))}
+            .photor__viewportControl
+              .photor__viewportControlPrev
+              .photor__viewportControlNext
+          .photor__thumbs
+            .photor__thumbsWrap
+
+          / // comments for web
+          .comment.d-none.d-md-block.mt-5
+            = render partial:'items/comment', locals: {item: @item, all_comments: @all_comments}
+
+    .col-sm-4.col-12.item__detail-col
+      h1.item__name-d
+        = @item.name
+      .item__price
+        span.text-dark
+          = number_to_currency(@item.price, unit: "¥", format: "%u%n", precision: 0)
+        span.ml-2
+          = t("tax included")
+      ul.list-unstyled.item__info.d-none.d-md-block
+        li
+          .item__subtitle Brand
+          .item__short-info
+            = link_to @item.brand.name, brand_path(@item.brand.name)
+        li
+          .item__subtitle Category
+          .item__short-info
+            = link_to @item.category.title, category_path(@item.category.title)
+      = form_for :order_item, url: order_items_path, "data-parsley-validate" => true, remote: true do |f|
+        = f.hidden_field :item_id, value: @item.id
+        = f.hidden_field :seller_id, value: @item.seller.id
+        / = f.hidden_field :unit_price, value: @item.price
+        / = f.hidden_field :unit_shipping_fees, value: @item.shipping_fees
+        / = f.hidden_field :total_price, value: @item.total_price
+        / = f.hidden_field :status, value: 'Pending'
+        = f.hidden_field :buyer_id, value: "#{current_user.present? ? current_user.id : ''}"
+        .form-group.mt-3
+          = f.select(:quantity_id, options_for_select(@item.remaining_size.map {|q| ["#{q.size.size}"+" / "+t('remaining')+"#{q.remaining}"+" "+t('items'), q.id]}), {include_blank: "サイズが選択されていません"}, {class: "form-control", disabled:!@item.remaining_size.present?, required: true})
+        - if @item.remaining_size.present?
+          = f.submit t("Add to Cart"), class:"btn btn-block btn-lg btn-primary", data: { disable_with: t("Add to Cart") }
+        -else
+          button.btn.btn-block.btn-lg.btn-disable disabled=true
+            = t('Sold Out')
+      ul.list-unstyled.item__info.d-block.d-md-none
+        li
+          .item__subtitle Brand
+          .item__short-info
+            = link_to @item.brand.name, brand_path(@item.brand.name)
+        li
+          .item__subtitle Category
+          .item__short-info
+            = link_to @item.category.title, category_path(@item.category.title)
+      .item__seller.seller.d-flex.mt-5
+        .seller__image
+          .seller__profile-img
+            = image_tag @item.seller.decorate.avatar, class:'rounded-circle', width:'48', height: '48'
+        div.flex-grow-1
+          .seller__detail.pl-3.d-flex
+            .seller__name
+              =link_to @item.seller.name, seller_profile_path(@item.seller), class: 'h2 font-weight-bold'
+            .ml-auto.mb-2
+              - if current_user.present? && current_user.following?(@item.seller)
+                = link_to t('Following'), unfollow_path(@item.seller), method: :post, remote: true, class: 'btn btn-primary btn-block btn-follow js-follow btn-sm ml-1'
+              -else
+                = link_to t('Follow'), follow_path(@item.seller), method: :post, remote: current_user.present?, class: 'btn btn-outline-primary btn-block btn-follow js-follow btn-sm ml-1'
+          .seller__info.pl-3
+            p
+              = @item.description
+      -if @item.reviews.present?
+        .item__review.d-flex.pt-3
+          .item__subtitle-review Review
+          .flex-column
+            - @reviews.each do |review|
+              .item__review-content
+                .item__reviewer-name
+                  = review.buyer.full_name
+                - review.rating.to_i.times do
+                  .fa.fa-star
+                - review.blank_star.to_i.times do
+                  .fa.fa-star.disabled
+                .item__reviewer-content
+                  = review.description
+                .item__review-date
+                  = review.created_at.strftime("%Y年%m月%d日")
+      / // comments for Mobile
+      .comment.d-block.d-md-none.mt-4
+        = render partial:'items/comment', locals: {item: @item, all_comments: @all_comments}
+
+  -if @related_items.present?
+    hr
+    h1.mb-4
+      span = t("Related List")
+    .col-spacing-sm
+      = render partial:'shared/suggestion_item_list', locals: {items: @related_items}
+=render partial: 'order_items/cart_modal'
+
+

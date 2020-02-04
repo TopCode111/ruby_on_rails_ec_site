@@ -1,0 +1,23 @@
+.d-block.d-md-none.mt-4.m-20.mb-4
+  .follower__select
+    = link_to 'フォロー中バイヤー', '#', class: 'dropdown-toggle btn', 'data-toggle': "modal", 'data-target': "#following_list"
+
+
+#following_list.follower__modal.modal.fade aria-hidden="true" aria-labelledby="basicModal" role="dialog" tabindex="-1" 
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h1#myModalLabel.modal-title フォロー中バイヤー
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"
+            =image_tag "close.png"
+      .modal-body
+        - @followings.each do |following|
+          ul.follow.mt-4.pl-0
+            = link_to seller_profile_path(following)
+              li.follow__seller.d-flex.mb-2
+                .follow__seller-img.p-rlt.mr-2
+                  =image_tag following.decorate.avatar, class: 'rounded-circle', width: '32', height: '32'
+                  =image_tag "check-icon.png", class: "item__seller-check"
+                .follow__seller-name.mr-auto.d-flex.flex-wrap.align-content-center
+                  =following.name

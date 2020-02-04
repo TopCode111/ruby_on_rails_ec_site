@@ -1,0 +1,55 @@
+.d-block.d-md-none
+  .container.m-20
+    nav.navbar.justify-content-between.d-flex.pl-0.pr-0
+      .nav-mobile
+        div.burger.mt-2
+          .burger__toggle
+        .slide-menu
+          .slide-menu__overlay
+          .slide-menu__nav#JsSidenav
+            .slide-menu__header
+              = render 'shared/header-responsive/side_bar_header'
+            .slide-menu__body
+              = render 'shared/header-responsive/user_menu'
+              = render 'shared/header-responsive/category'
+              = render 'shared/header-responsive/brand'
+            .slide-menu__footer
+              - if current_user.present?
+                = link_to t("Sign out"), destroy_user_session_path, method: :delete, class: 'btn btn-outline-primary btn-block pr-3'
+              -else
+                =link_to t("Register"), "/users/sign_up", class: 'btn btn-outline-primary btn-block pr-3'
+      a.navbar-brand.mr-0 href="/"
+        =image_tag "pick-logo.png"
+      .nav
+        .mr-2
+          .cart
+            = link_to cart_path do
+              =image_tag 'lnr-cart.svg', width: '17px', height: '17px'
+              span.cart__number.js_cart_count = current_purchase_order.decorate.order_item_count(current_user)
+        - if current_user.present?
+          = link_to buyer_mypage_path do
+            = image_tag 'user-icon.svg', class: 'nav-link pr-0'
+        - else
+          = link_to(t('Login'), "/users/sign_in", class:'nav-link pr-0')
+
+.d-md-block.d-none
+  .container
+    header.navbar.d-flex.flex-column.flex-md-row.align-items-center.pr-0.pl-0
+      a.navbar-brand href="/"
+        =image_tag "pick-logo.png"
+      .nav
+        .mr-4
+          .cart
+            = link_to cart_path do
+              =image_tag 'lnr-cart.svg', width: '20px', height: '20px'
+              span.cart__number.js_cart_count = current_purchase_order.decorate.order_item_count(current_user)
+        - if current_user.present?
+          = link_to buyer_mypage_path do
+            .d-flex
+              .mr-3
+                = image_tag 'user-icon.svg'
+              .navbar-brand.mr-0.text-dark
+                = current_user.full_name
+        - else
+          = link_to(t('Login'), "/users/sign_in", class:'btn btn-primary btn-sm')
+          = link_to(t('Register'), "/users/sign_up", class:'nav-link pr-0')

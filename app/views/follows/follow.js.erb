@@ -1,0 +1,9 @@
+<%if current_user.following?(@seller)%>
+  $('.js-follow').html('フォロー中');
+  var seller_id = <%= @seller.id%>
+  $('.js-follow').attr('href', '/unfollow/'+seller_id);
+  $('.js-follow').attr('data-method', 'post');
+  $('.js-follow').removeClass('btn-outline-primary');
+  $('.js-follow').addClass('btn-primary');
+  $('.follow-count').html("<%= escape_javascript render partial: '/users/follower_count' %>");
+<%end%>

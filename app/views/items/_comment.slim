@@ -1,0 +1,56 @@
+- if @all_comments.present? || current_user.present?
+  .clearfix.mb-4
+    .pull-left
+      - if item.root_comments.count > 0
+        .head_title 
+          = t('Comment to this product')+'('+item.root_comments.count.to_s+')'
+      -else
+        .head_title =t('Comment to this product')
+    - unless current_user.present?
+      .pull-right
+        .head_title                    
+          a href='/users/sign_in' ログイン
+          span または
+          a href="/users/sign_up" 登録
+          span 質問する
+  
+- if current_user.present?
+  = form_tag item_comments_path(item), method: :post, class: 'mb-3', remote: true do
+    .input-group
+      =text_field_tag :comment, '', class: 'form-control', autocomplete: 'off', placeholder: 'コメント'
+      .input-group-prepend
+        button.btn.btn-primary
+          |コメントする
+
+- all_comments.each_with_index do |comment, index|
+  .media
+    =image_tag "#{comment.user.decorate.avatar}", class: 'align-self-start mr-2', width: '35'
+    .media-body
+      .mt-0.h4.mb-0
+        strong.text-link #{comment.user.decorate.name}
+        span.comment__text
+          | &nbsp;
+          = comment.body
+      .comment__sub-info.h5.mb-0
+        span.comment__date.text-gray.mr-2 #{comment.created_at.strftime("%b %d")}
+        span = link_to t('Reply'), comment_threads_path(comment, page: params[:page]), remote: true, class: 'comment_reply' if current_user.present?
+      div.js-threads class="comment-#{comment.id}"
+      .js-reply class="comment-one-reply-#{comment.id}"
+        - if comment.has_children?
+          - last_child = comment.children.last
+          .media.mt-2
+            =image_tag "#{last_child.user.decorate.avatar}", class: 'align-self-start mr-2', width: '30'
+            .media-body
+              .mt-0.h4.mb-0
+                strong.text-link #{last_child.user.decorate.name}
+                span.comment__text
+                  | &nbsp;
+                  = last_child.body
+              .comment__sub-info.h5.mb-0
+                span.comment__date.text-gray.mr-2 #{last_child.created_at.strftime("%b %d")}
+        = link_to t("View more Reply")+'('+comment.reply_count.to_s+')', comment_threads_path(comment, page: params[:page]), remote: true, class: 'h5 text-primary comment_reply' if comment.children.count > 1
+  - unless index == all_comments.size - 1      
+    hr.mb-2.mt-2
+.paginator.clearfix
+  = link_to_prev_page @all_comments, '<< 前の件', remote: true, class: 'pull-left left-paginate'
+  = link_to_next_page @all_comments, '次の件 >>', remote: true, class: 'pull-right right-paginate'

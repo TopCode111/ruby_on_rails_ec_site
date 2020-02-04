@@ -1,0 +1,62 @@
+.container
+  .row.item
+    .col-sm-8.col-12.item__image-col
+      .item__img-collection
+        .photor
+          .photor__viewport
+            .photor__viewportLayer
+              =image_tag "item-img.png", data: { thumb: image_path('item-thumb.png')}
+              =image_tag "item-img.png", data: { thumb: image_path('item-thumb.png')}
+              =image_tag "item-img.png", data: { thumb: image_path('item-thumb.png')}
+              =image_tag "item-img.png", data: { thumb: image_path('item-thumb.png')}
+              =image_tag "item-img.png", data: { thumb: image_path('item-thumb.png')}
+              =image_tag "item-img.png", data: { thumb: image_path('item-thumb.png')}
+            .photor__viewportControl.d-md-none.d-block
+              .photor__viewportControlPrev
+              .photor__viewportControlNext
+          .photor__thumbs.d-md-block.d-none
+            .photor__thumbsWrap
+    .col-sm-4.col-12.item__detail-col
+      .item__detail
+        h1.item__name
+          | Pink Gingham Check Off-Top Tops
+        .item__price
+          span ￥ 2,500
+          span
+            |(tax included)
+        ul.list-unstyled.item__info.pt-4
+          li
+            .item__subtitle Brand
+            .item__short-info Basic Cotton
+          li
+            .item__subtitle Category
+            .item__short-info tops
+          li
+            .item__subtitle Size
+            .item__short-info M
+        button.btn.btn-primary.btn-block.btn-lg Add to Cart
+      .item__seller.seller.d-flex.mt-5
+        .seller__image
+          .seller__profile-img
+            =image_tag "seller-img.png", class: 'rounded-circle'
+        .seller__detail.pl-3
+          .seller__name
+            =link_to "Yuriya Retriever", "#", class: 'h2 font-weight-bold'
+          .seller__info
+            p Pink Gingham Check Offshore Tops 【Lily Appliances】
+            p
+              |Product Size
+              br/
+              | Length: 34
+              br/
+              | Body Width: 32
+              br/
+              | Shoulder Width: 42
+              br/
+              | Sleeve Length: 27
+            p ※ Yurihaka Height (Please refer to the size!) 162cm
+            p
+              |Pickup point The sleeve ribbon looks cute with an accent. Please carefully read the precautions on using the top of the product, please purchase it.
+
+
+

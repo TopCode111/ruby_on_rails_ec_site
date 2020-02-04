@@ -1,0 +1,36 @@
+.comment{
+  &__text{
+    color: $optgray;
+  }
+  &__date{
+    color: $concrete;
+  }
+  .input-group{
+    .form-control{
+      height: calc(2.0rem + 2px);
+    }
+    .btn{
+      padding: inherit;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      background: asset-url('comment.png') $primary no-repeat;
+      background-size: 18px;
+      background-position: 12px;
+      padding-left: 38px;
+      padding-right: 12px;
+    }
+  }
+}
+.paginator{
+  margin-top: 30px;
+}
+.head_title{
+  font-size: 16px;
+  font-weight: 600;
+}
+@media (max-width: 450px) {
+  .head_title {
+    font-size: 13px;
+    font-weight: 600;
+  }
+}

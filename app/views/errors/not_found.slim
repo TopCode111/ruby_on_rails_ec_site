@@ -1,0 +1,15 @@
+= title "このページは見つかりません"
+=meta_description
+.container.m-20
+  -breadcrumb :not_found
+  = render partial: 'shared/search-form'
+  = render partial: 'shared/bread_crumb'
+.main-content
+  .status-code
+    | 404
+  .status-message
+    p
+      | お客様がお探しのページは見つかりませんでした。
+    p.status
+      | お探しのページは、削除されたか、名前が変更されたか、または一時的に利用できない可能性があります。
+        問題が続くようであれば Web サイト管理者に連絡してください。

@@ -1,0 +1,12 @@
+= title "商品を検索する"
+  = meta_description 
+.container.search-form.m-20
+  -breadcrumb :search
+  = render "shared/search-form"
+  = render "shared/bread_crumb"
+.container
+  .mt-4
+    .row.category.col-spacing-sm
+      = render "shared/search_filter"
+      = render partial:'shared/item_list', locals: {items: @items}
+

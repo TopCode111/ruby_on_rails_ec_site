@@ -1,0 +1,60 @@
+.offer{
+  color: $optgray;
+  &__title h1{
+    color: $primary;
+    font-size: 16px;
+  }
+  &__info{
+    line-height: 1.8;
+    @include media-breakpoint-down(sm){
+      margin-bottom: $space-xl;
+    }
+  }
+  @include media-breakpoint-down(sm){
+    .col-md-4 {
+      &:first-child{
+        .custom-col__content{
+          margin-top: $space-xm + $space-s;
+        }
+      }
+    }
+  }
+}
+
+.custom-col{
+  .row{
+    margin: 0 -50px;
+    @media(max-width: 767px) {
+      margin: 0;
+    }
+  }
+  section{
+    padding: 0 50px;
+  }
+}
+@media(max-width: 991px) {
+  .custom-col{
+    .row{
+      margin: 0 -20px;
+    }
+    section{
+      padding: 0 $space-xm;
+    }
+    &__content{
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+}
+@media(max-width: 767px) {
+  .custom-col{
+    &__info{
+      padding-bottom: 48px;
+    }
+    &__content{
+      margin: 0 auto;
+      padding: 0;
+      max-width: 260px
+    }
+  }
+}

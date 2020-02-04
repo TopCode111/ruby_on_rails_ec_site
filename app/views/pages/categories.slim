@@ -1,0 +1,94 @@
+.container
+  = render partial: 'shared/search-form'
+  .breadcrumb-bar
+    nav[aria-label="breadcrumb"]
+      ol.breadcrumb
+        li.breadcrumb-item
+          a[href="#"]
+            | Pick top
+        li.breadcrumb-item
+          a[href="#"]
+            | Women
+        li.breadcrumb-item.active[aria-current="page"]
+          | one piece
+.container.mt-4
+  .d-md-none.d-block
+    h1.pb-2.category__title Ladies items
+    .category__m-group
+      h5.mb-0.d-inline-block Similar Categories
+      ul.list-unstyled.d-inline-block.mb-0
+        li.h5
+          |Accessories
+        li.h5
+          |Accessories
+        li.h5
+          |Accessories
+
+
+  .row.category
+    .col-md-2.d-none.d-md-block.col-0
+      .sidebar
+        h1.pb-4.category__title Ladies items
+        .category__type.pt-4
+          h1 Category
+          ul.list-unstyled.mt-3
+            li.category__subtitle.mb-3
+              |Women
+              ul.category__item.list-unstyled.pl-3
+                li.pl-3
+                  =link_to "One Piece", "#", class: 'h3'
+                li.pl-3
+                  =link_to "Setup", "#", class: 'h3'
+                li.pl-3
+                  =link_to " Bottoms", "#", class: 'h3'
+            li.category__subtitle.mb-3
+              |tops
+            li.category__subtitle.mb-3
+              |Bottoms
+            li.category__subtitle.mb-3
+              |setup
+        .category__type.mt-4.pt-4
+          h1 Brand
+          ul.list-unstyled.mt-3
+            li.category__subtitle.mb-3
+              |Chanel
+            li.category__subtitle.mb-3
+              |Vuitton
+            li.category__subtitle.mb-3
+              |LINE
+    .col-md-10.ml-sm-auto.col-12
+      .category__container.items
+        .row
+          .col-sm-3.col-6
+            .item.mt-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |Black sleeveless
+              .item__price
+                |￥ 2,500
+          .col-sm-3.col-6
+            .item.mt-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |Black sleeveless
+              .item__price
+                |￥ 2,500
+          .col-sm-3.col-6
+            .item.mt-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |Black sleeveless
+              .item__price
+                |￥ 2,500
+          .col-sm-3.col-6
+            .item.mt-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |Black sleeveless
+              .item__price
+                |￥ 2,500
+

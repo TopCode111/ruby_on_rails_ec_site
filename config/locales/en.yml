@@ -1,0 +1,172 @@
+en:
+  Register: "Register"
+  Login: 'Login'
+  #signup
+  Create an account: "Create an account"
+  Email address: "Email address"
+  Last name: "Last name"
+  First name: "First name"
+  Password: "Password"
+  Password confirmation: "Password confirmation"
+  Confirm your account info: "Confirm your account info"
+  Name: "Name"
+  Back: "Back"
+  You've successfully registered: "You've successfully registered"
+  Go home: "Go home"
+  SignOut: 'SignOut'
+  #sign in, set/reset password
+  Or: 'Or'
+  Forgot your password: 'Forgot your password'
+  Send reset password instruction: 'Send reset password instruction'
+  Set new password: 'Set new password'
+  New password: 'New password'
+  New password confirmation: 'New password confirmation'
+  Change password: 'Change password'
+  #parsley error
+  This email is already exists: 'This email is already exists'
+  This email is invalid: 'This email is invalid'
+  #admin items
+  Item Name: 'Item Name'
+  Seller Name: 'Seller Name'
+  Item Price: 'Item Price'
+  Size: 'Size'
+  Brand: 'Brand'
+  Unpublish: 'Unpublish'
+  Publish: 'Publish'
+  Category Title: 'Category Title'
+  Sub Categories: 'Sub Categories'
+  Seller: 'Seller'
+  Category: "Category"
+  Size: 'Size'
+  Size Type: 'Size Type'
+  Select Size: 'Select Size'
+  Quantity: 'Quantity'
+  Image: 'Image'
+  Seller Name: 'Seller Name'
+  Item Images: 'Item Images'
+  Sizes: 'Sizes'
+  Picker: 'Picker'
+  Description: 'Description'
+  Photo: 'Photo'
+  instagram_url: "instagram"
+  twitter_url: "twitter"
+  line_url: "line"
+  facebook_url: "facebook"
+  #search
+  Keyword: 'Keyword'
+  Brand name: 'Brand name'
+  Free shipping: 'Free shipping'
+  Search: 'Search'
+  Sub Category: 'Sub category'
+  Search by brand name / keyword: 'Search by brand name / keyword'
+  #items
+  No items found: 'No Items Found'
+  remaining: 'remaining'
+  items: 'items'
+  Related List: 'Related List'
+  Add to Cart: 'Add to Cart'
+  tax included: '(tax included)'
+  #pages
+  See More: 'See More'
+  #breadcrumbs
+  Pick Top: "Pick Top"
+  Search_Items: "Search_Items"
+  Checkout: "Checkout"
+  Shipping address: "Shipping address"
+  Payment Method: "Payment Method"
+  #review
+  Product review: 'Product review'
+  Post: 'Post'
+  Select a rating: 'Select a rating'
+  Comment: 'Comment'
+  Item successfully reviewed: 'Item successfully reviewed'
+  You cannot review this item: 'You cannot review this item'
+  #buyer
+  Logout: 'Logout'
+  Shipping address / payment: 'Shipping address / payment'
+  Shipping address: 'Shipping address'
+  Update: 'Update'
+  Create: 'Create'
+  MyPage: 'MyPage'
+  MyPage TOP: 'MyPage TOP'
+  TOP: 'TOP'
+  Purchase histories: 'Purchase histories'
+  Address/Payment: 'Address/Payment'
+  Payment method: 'Payment method'
+  Register your shipping address: 'Register your shipping address'
+  Zip code: 'Zip code'
+  Address: 'Address'
+  Prefectures: 'Prefectures'
+  Address line 1: 'Address line 1'
+  Confirm: 'Confirm'
+  Address line 2: 'Address line 2'
+  #seller
+  Select item: 'Select item'
+  #application_controller(after_sign_in)
+  You are unauthorized to login: 'You are unauthorized to login'
+  #purchase_history
+  Purchase History: 'Purchase History'
+  Purchase date: 'Purchase date'
+  Delivery address: 'Delivery address'
+  Product Review: 'Product Review'
+  Purchase Again: 'Purchase Again'
+  #footer
+  Privacy policy: 'Privacy policy'
+  Terms and conditions: 'Terms and conditions'
+  #checkout
+  Your item: 'ご注文の商品'
+  Price: 'Price'
+  Shipping fee: 'Shipping fee'
+  Total: 'Total'
+  (tax included): '(tax included)'
+  Items in cart: 'Items in cart'
+  Confirm input contents: 'Confirm input contents'
+  Payment Method is not registered: 'Payment Method is not registered'
+  The addressee address is not registered: 'The addressee address is not registered'
+  ※ You can not change payment after order confirmation: '※ You can not change payment after order confirmation'
+  Confirm order: 'Confirm order'
+  Contents of order: 'Contents of order'
+  Payment is complete: 'Payment is complete'
+  The payment procedure was successfully completed: 'The payment procedure was successfully completed.'
+  Or you may send the order contents by e-mail! Bye!: 'Or you may send the order contents by e-mail! Bye!'
+  Done: 'Done'
+  Checkout Success : 'Checkout Success'
+  You have already ordered this item: 'You have already ordered this item'
+  Failed to create order: 'Failed to create order'
+  You are not allowed to perform this action: 'You are not allowed to perform this action'
+  Delete: '削除する'
+  There are no items in cart: "There are no items in cart"
+  Continue Shopping: "Continue Shopping"
+  Delete: 'Delete'
+  Continue: 'Continue'
+  View Cart: 'View Cart'
+  #admin
+  Total Price: 'Total Price'
+  Status: 'Status'
+  User Name: 'User Name'
+  Add more sizes: 'Add more sizes'
+  Add more images: 'Add more images'
+  remove: 'remove'
+  Sold Out: 'Sold Out'
+  Item successfully updated: 'Item successfully updated'
+  Please Select Buyer: 'Please Select Buyer'
+  Please Select Brand: 'Please Select Brand'
+  Change Password: 'Change Password'
+  Seller Profile: "Seller Profile"
+  Billing Address: "Billing Address"
+  #flash message
+  Successfully, password updated: 'Successfully, password updated'
+  #seller
+  Follow: 'Follow'
+  Following: 'Following'
+  followings: 'followings'
+  Buyer during follow: 'Buyer during follow'
+  Following buyers' product list: "Following buyers' product list"
+  Recommended buyers: 'Recommended buyers'
+  Related items: 'Related items'
+  No followings found: "No followings found"
+  #comment
+  Comment to this product: 'Comment to this product'
+  Reply: 'Reply'
+  View more Reply: 'もっと見る'
+  Purchased count: 'Purchased count'

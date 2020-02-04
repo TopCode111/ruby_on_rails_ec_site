@@ -1,0 +1,91 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+defaults: &defaults
+  environment:
+    AWS_ACCESS_KEY_ID: .
+    AWS_SECRET_ACCESS_KEY: .
+    AWS_REGION: .
+    SENDGRID_USERNAME: .
+    SENDGRID_PASSWORD: .
+    SENDGRID_DOMAIN: .
+  working_directory: ~/pickofficial
+  docker:
+    # specify the version you desire here
+    - image: circleci/ruby:2.5.1-node-browsers
+      environment:
+        PGHOST: localhost
+        PGUSER: pickofficial
+        RAILS_ENV: test
+    - image: postgres:10.1-alpine
+      environment:
+        POSTGRES_USER: pickofficial
+        POSTGRES_DB: pickofficial_test
+        POSTGRES_PASSWORD: password
+
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/postgres:9.4
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      - run: gem install bundler
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+        
+      # Database setup
+      - run: >
+            echo 'test:
+              host: localhost
+              username: pickofficial
+              password: password
+              database: pickofficial_test
+              adapter: postgresql
+            ' > config/database.yml
+
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load
+
+      # run tests!
+      # - run:
+      #     name: run tests
+      #     command: |
+      #       mkdir /tmp/test-results
+      #       TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            
+      #       bundle exec rspec --format progress \
+      #                       --format RspecJunitFormatter \
+      #                       --out /tmp/test-results/rspec.xml \
+      #                       --format progress \
+      #                       $TEST_FILES
+
+      - run: bundle exec rspec
+
+      # collect reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+          

@@ -1,0 +1,64 @@
+=title "購入完了"
+=meta_description
+.container.m-20
+  =render partial: 'shared/search-form'
+  / -breadcrumb :thankyou, @order
+  / =render partial: 'shared/bread_crumb'
+.container.mt-4
+  .checkout
+    .row.mt-4
+      .col-md-7.col-12.text-center
+        h1
+          = t('Payment is complete')
+        .checkout__success_title
+          | THANK YOU
+          br
+          | FOR SHOPPING
+        .checkout__title.headline_color
+          span = t('The payment procedure was successfully completed')
+          br
+          span = t('Or you may send the order contents by e-mail! Bye!')
+        .m-auto.checkout__thank-btn
+          = link_to t('Done'), root_path, class: 'btn btn-primary btn-block btn-lg mt-4 '
+      .col-md-5.col-12
+        .checkout__cart-list
+          .d-block.d-md-none
+            hr
+          h1
+            = t('Contents of order')
+          .card.mt-4
+            .card-body.bg-offwhite
+              h3.checkout__title.headline_color = t('Your item')
+              -@order_items.each_with_index do |order_item, index|
+                .d-flex.mt-3
+                  .
+                    - if order_item.item.images.present?
+                      =image_tag order_item.item.first_image.url(:xsmall), class: 'img-fluid rounded'
+                    - else
+                      =image_tag 'default_item_image.png', class: 'img-fluid rounded'
+                  .ml-3
+                    .checkout__title = order_item.item_name
+                    .checkout__title.headline_color.mt-1
+                      span = t('Size')
+                      span.ml-1 = ':' " #{order_item.size}"
+                    .checkout__title.mt-1
+                      = number_to_currency(order_item.unit_price, unit: "¥", format: "%u%n", precision: 0)
+                - unless index == @order_items.count - 1
+                  hr
+          .d-flex.align-items-baseline.mt-3
+            .flex-grow-1.headline_color.checkout__title = t('Shipping fee')
+            .checkout__headtitle
+               = number_to_currency(@order.sum_shipping_fees, unit: "¥", format: "%u%n", precision: 0)
+          .d-flex.align-items-baseline
+            .flex-grow-1.headline_color.checkout__title = t('Total')
+            .checkout__totalprice
+              span.text-dark
+                =number_to_currency(@order.total_price, unit: "¥", format: "%u%n", precision: 0)
+              span.checkout__title.ml-2
+                =t('(tax included)')
+    -if @related_items.present?
+      hr
+      h1.mb-4
+        span = t("Related List")
+      .col-spacing-sm
+        = render partial:'shared/suggestion_item_list', locals: {items: @related_items}

@@ -1,0 +1,17 @@
+.d-none.d-md-block
+  footer
+    .container
+      .footer.d-flex.justify-conten-between
+        .footer__terms.w-100
+          =link_to t("Privacy policy"), privacy_path, class: 'mr-5'
+          =link_to t("Terms and conditions"), terms_conditions_path
+        .footer__copy.flex-shrink-0
+          |© GIVIN Inc.
+.d-block.d-md-none
+  footer
+    .footer.pl-3.pr-3
+      .footer__terms.d-flex.justify-content-between
+        =link_to t("Privacy policy"), privacy_path
+        =link_to t("Terms and conditions"), terms_conditions_path
+      .footer__copy.text-center.mt-4
+        |© GIVIN Inc.

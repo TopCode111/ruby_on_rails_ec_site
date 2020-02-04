@@ -1,0 +1,58 @@
+=title "購入履歴"
+=meta_description
+.container.m-20
+  =render partial: 'shared/search-form'
+  -breadcrumb :purchase_history
+  =render partial: 'shared/bread_crumb'
+.container
+  .row.mt-4
+    .col-md-3.d-none.d-md-block.col-0
+      .sidebar
+        = render 'buyers/buyer_side_bar'
+        .category__type.pt-3.pb-3
+          = link_to t("Logout"), destroy_user_session_path, method: :delete
+    .col-md-9.ml-sm-auto.col-12
+      .category__container.items
+      -if @purchase_orders.present?
+        -@purchase_orders.each do |purchase_order|
+          .card.mb-4
+            .card-body.bg-offwhite
+              .purchase.text-sm
+                .row
+                  .col-sm-3.col-5
+                    .text-secondary
+                      = t("Purchase date")
+                    .text-dark
+                      = purchase_order.purchase_date.strftime("%Y / %m / %d")
+                  .col-sm-7.col-7
+                    .text-secondary
+                      = t("Delivery address")
+                    .text-dark
+                      = purchase_order.billing_prefecture+purchase_order.billing_address_1+purchase_order.billing_address_2
+                -purchase_order.order_items.each do |order|
+                  -if order.present?
+                    hr
+                    .purchase__history-list
+                      .purchase__history-info
+                        .row
+                          .col-md-5
+                            .media.d-mb-2.d-mb-none
+                              -if order.item.present? && order.item.images.present?
+                                = image_tag order.item.first_image.url(:xsmall), class: 'mr-3 avater-img rounded'
+                              -else
+                                =image_tag "default_item_image.png", class: 'mr-3 avater-img rounded'
+                              .media-body
+                                = link_to order.item_name, order.item.present? ? item_path(order.item) : error_404_path, class:'mt-0'
+                                .text-dark.mt-2
+                                  = number_to_currency(order.total_price, unit: "¥", format: "%u%n", precision: 0)
+                          .col-md-7
+                            .row.purchase__history-btns
+                              div class="#{order.reviewed  || !order.item.present? ? "offset-md-6" : "col-6"}"
+                                -if order.item.present? && !order.reviewed
+                                  =link_to t("Product Review"), item_review_path(order.id,order.item), class: "button btn btn-outline-primary btn-block text-sm btn-outline-primary-bgwhite font-weight-300"
+                              .col-6
+                                =link_to t("Purchase Again"), order.item.present? ? item_path(order.item) : error_404_path, class: "button btn btn-primary btn-block text-sm font-weight-300"
+      .row.justify-content-center
+        .mt-3
+          = paginate @purchase_orders
+

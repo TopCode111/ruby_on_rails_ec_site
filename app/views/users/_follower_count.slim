@@ -1,0 +1,4 @@
+- if @seller.followers_count > 0
+  .seller__descp
+    | フォロワー
+    span.seller__follow_count.text-primary = "#{@seller.followers_count}"

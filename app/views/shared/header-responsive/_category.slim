@@ -1,0 +1,16 @@
+- if @categories.present?
+  .category.slide-menu__category.mt-3
+    h1 = t('Category')
+    #accordion
+      - @categories.each do |category|
+        .card
+          .card-header id="heading#{category.id}"
+            .category__subtitle.collapsed aria-controls="collapse#{category.id}" aria-expanded=false data-target="#collapse#{category.id}" data-toggle="collapse"
+              = category.title
+          -category.sub_categories.each do |sub_category|
+            .collapse aria-labelledby="heading#{category.id}" data-parent="#accordion" id="collapse#{category.id}"
+              .card-body
+                ul.category__item.list-unstyled
+                  li
+                    = link_to sub_category.name, sub_category_path(category.title, sub_category.name), class: 'h3 d-block'
+

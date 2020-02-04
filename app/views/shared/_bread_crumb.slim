@@ -1,0 +1,2 @@
+.breadcrumb-bar class="#{(params[:controller] == 'users' && params[:action] == 'show') || (params[:controller] == 'items' && params[:action] == 'show') ? 'breadcrumb-bar-line' : ''}"
+  = raw breadcrumbs style: :bootstrap, autoroot: false

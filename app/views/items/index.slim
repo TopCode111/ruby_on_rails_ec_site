@@ -1,0 +1,30 @@
+- if params[:sub_category_name].present? && params[:category_name].present?
+  = title params[:sub_category_name]
+  = meta_description params[:sub_category_name]
+- elsif params[:category_name].present?
+  = title params[:category_name]
+  = meta_description params[:category_name]
+- elsif params[:brand_name].present?
+  = title params[:brand_name]
+  = meta_description params[:brand_name]
+= render "shared/search_bar"
+.container.mt-4
+  .d-md-none.d-block
+    h1.pb-2.category__title
+      = "#{params[:category_name]}"
+    .category__m-group
+      .row
+        .category__similar-title.h5.mb-0.d-inline-block.ml-2 関連カテゴリー
+        -if selected_category(params[:category_name]).present?
+          .category__similar.d-inline-block
+            ul.list-unstyled.mb-0
+              - selected_category(params[:category_name]).sub_categories.each do |sub_category|
+                li
+                  =link_to sub_category_path(params[:category_name], sub_category.name) do
+                    = "#{sub_category.name}"
+
+  .row.category.col-spacing-sm
+    = render "shared/sidebar"
+    = render partial:'shared/item_list', locals: {items: @items}
+
+

@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title
+      = yield(:title)
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta content="#{yield(:meta_description)}" name="description"
+    meta content="width=device-width, initial-scale=1, user-scalable=0" name="viewport"
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag asset_path("parsley.i18n.#{I18n.locale}.js")
+    = javascript_include_tag "https://js.stripe.com/v2/"
+  body class=("#{add_class}")
+
+    javascript:
+      Stripe.setPublishableKey("pk_test_HLlX6rla1WmWuGbpFP21LQ8e");
+    = render partial: 'shared/header'
+    .notice-partial
+      = render "layouts/flash_messages"
+    main
+      = yield
+    = render partial: 'shared/footer'

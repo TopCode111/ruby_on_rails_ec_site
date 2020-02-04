@@ -1,0 +1,12 @@
+- if categories.present?
+  .category__type.pt-4
+    h1
+      = t('Category')
+    - categories.each do |category|
+      ul.list-unstyled.mt-3
+        li.category__subtitle.mb-3
+          =link_to category.title, category_path(category.title), class: 'text-dark'
+        - category.sub_categories.each do |sub_category|
+          ul.category__item.list-unstyled.pl-3
+            li.sidebar_active.pl-3
+              =link_to sub_category.name, sub_category_path(category.title, sub_category.name), class: 'h3 text-dark'

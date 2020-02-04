@@ -1,0 +1,524 @@
+.container
+  .row.flex-xl-nowrap
+    h1.display-h3 Pick Official Design Guide
+.container
+  h1.display-5
+    Strong 01_Color Scheme.
+  .row
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-primary
+        .p-2
+          |$primary &nbsp;
+          |#754DEA
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-secondary
+        .p-2
+          |$secondary &nbsp;
+          |#888888
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-deepviolet
+        .p-2
+          |$deepviolet &nbsp;
+          |#5E39C8
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-lightviolet
+        .p-2
+          |$lightviolet &nbsp;
+          |#BEA8FD
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-danger
+        .p-2
+          |$danger &nbsp;
+          |#E51111
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-warning
+        .p-2
+          |$warning &nbsp;
+          |#EBBE50
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-dark
+        .p-2
+          |$dark &nbsp;
+          |#222222
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-optgray
+        .p-2
+          |$optgray &nbsp;
+          |#555555
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-concrete
+        .p-2
+          |$concrete &nbsp;
+          |#C8C8C8
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-lightgray
+        .p-2
+          |$lightgray &nbsp;
+          |#EAEAEA
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-offwhite
+        .p-2
+          |$offwhite &nbsp;
+          |#f8f8f8
+    .col-md-3
+      .color-swatch
+        .color-swatch-header.bg-white
+        .p-2
+          |$white &nbsp;
+          |#ffffff
+  hr
+  .h1.mb-4
+    strong 02_Typography
+  .row
+    .col-md-6
+      h1
+        |h1 - Heading 1
+      h2
+        |h2 - Heading 2
+      h3
+        |h3 - Heading 3
+      h4
+        |h4 - Heading 4
+      h5
+        |h5 - Heading 5
+      h6
+        |h6/p - Heading/Paragraph 6
+    .col-md-6
+      strong Paragraph
+      p
+        |Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam faucibus nunc ut arcu accumsan, eu interdum sem pharetra. Nulla dui ex, faucibus congue tincidunt eget, rhoncus fermentum metus. Duis ante erat, ultricies a velit sit amet, euismod porta ante. Duis nec feugiat diam. Donec viverra sodales massa at ultricies.
+      =link_to "Click here !", "#"
+  hr
+section#section-components.section-components.pb-0
+  .container
+    .h1.mb-4
+      strong 03_Form Elements
+    .row.justify-content-center
+      .col-lg-6
+        h3.h4.text-success.font-weight-bold.mb-4 Buttons
+        /! Button styles
+        .row
+          .col-md-6
+            small.text-uppercase.font-weight-bold Normal
+            button.btn.btn-primary.btn-block type="button"  Button
+          .col-md-6
+            small.text-uppercase.font-weight-bold Hover
+            button.btn.btn-primary-hover.btn-block type="button"  Button
+          .col-md-6
+            small.text-uppercase.font-weight-bold Disable
+            button.btn.btn-disable.btn-block type="button"  Button
+          .col-md-6
+            small.text-uppercase.font-weight-bold Default
+            button.btn.btn-default.btn-block type="button"  Button
+          .col-md-6
+            small.text-uppercase.font-weight-bold Outline
+            button.btn.btn-1.btn-outline-primary.btn-block type="button"  Outline
+          .col-md-6
+            small.text-uppercase.font-weight-bold Outline Hover
+            button.btn.btn-primary-hover.btn-block type="button"  Outline
+      .col-lg-6
+        section.pb-0.section-components
+          .container.mb-5
+            /! Inputs
+            h3.h4.text-success.font-weight-bold.mb-4 Inputs
+            .mb-3
+              small.text-uppercase.font-weight-bold Form controls
+            .row
+              .col-lg-6
+                .form-group
+                  input.form-control placeholder="Regular" type="text" /
+              .col-lg-6
+                .form-group
+                  input.form-control disabled="" placeholder="Regular" type="text" /
+              .col-lg-6
+                .form-group
+                  input.form-control.is-invalid placeholder=("Error Input") type="email" /
+              .col-lg-6
+                select#exampleFormControlSelect1.form-control
+                  option
+                    | 1
+                  option
+                    | 2
+                  option
+                    | 3
+                  option
+                    | 4
+                  option
+                    | 5
+            /! Custom controls
+            .row
+              .col-lg-6.col-md-6
+                /! Checkboxes
+                .mb-3
+                  small.text-uppercase.font-weight-bold Checkboxes
+                .custom-control.custom-checkbox.mb-3
+                  input#customCheck1.custom-control-input type="checkbox" /
+                  label.custom-control-label for="customCheck1"
+                    span Unchecked
+                .custom-control.custom-checkbox.mb-3
+                  input#customCheck2.custom-control-input checked="" type="checkbox" /
+                  label.custom-control-label for="customCheck2"
+                    span Checked
+                .custom-control.custom-checkbox.mb-3
+                  input#customCheck3.custom-control-input disabled="" type="checkbox" /
+                  label.custom-control-label for="customCheck3"
+                    span Disabled Unchecked
+                .custom-control.custom-checkbox.mb-3
+                  input#customCheck4.custom-control-input checked="" disabled="" type="checkbox" /
+                  label.custom-control-label for="customCheck4"
+                    span Disabled Checked
+              .col-lg-6.col-sm-6.mt-4.mt-md-0
+                /! Radio buttons
+                .mb-3
+                  small.text-uppercase.font-weight-bold Radios
+                .custom-control.custom-radio.mb-3
+                  input#customRadio1.custom-control-input name="custom-radio-1" type="radio" /
+                  label.custom-control-label for="customRadio1"
+                    span Unchecked
+                .custom-control.custom-radio.mb-3
+                  input#customRadio2.custom-control-input checked="" name="custom-radio-1" type="radio" /
+                  label.custom-control-label for="customRadio2"
+                    span Checked
+                .custom-control.custom-radio.mb-3
+                  input#customRadio3.custom-control-input disabled="" name="custom-radio-2" type="radio" /
+                  label.custom-control-label for="customRadio3"
+                    span Disabled unchecked
+                .custom-control.custom-radio.mb-3
+                  input#customRadio4.custom-control-input checked="" disabled="" name="custom-radio-2" type="radio" /
+                  label.custom-control-label for="customRadio4"
+                    span Disabled checkbox
+section
+  .container
+    hr
+    .h1
+      strong 04_Components
+    /! Navigation
+    h2.mb-5
+      span Navbars
+    nav.navbar.navbar-expand-lg.navbar-light.justify-content-between.d-flex
+      a.navbar-brand href="#"
+        =image_tag "pick-logo.png"
+      div
+        button.navbar-toggler aria-controls="navbar-default" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbar-default" data-toggle="collapse" type="button"
+          span.navbar-toggler-icon
+        #navbar-default.collapse.navbar-collapse
+          .navbar-collapse-header
+            .row
+              .col-6.collapse-brand
+                a href="index.html"
+                  =image_tag "pick-logo.png"
+              .col-6.collapse-close
+                button.navbar-toggler aria-controls="navbar-default" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbar-default" data-toggle="collapse" type="button"
+                  span
+                    span
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav
+            li.nav-item
+              a.btn.btn-primary.btn-sm  href="#"  Register
+            li.nav-item
+              a.nav-link href="#"  Login
+    .search
+      form action=""
+        .d-flex.flex-row
+          .search__field.mr-3
+            .form-group
+              input.form-control placeholder="Search by brand name / key word" type="text" /
+    .row.row-grid.justify-content-between.align-items-top.mt-lg
+      .col-lg-5
+        h3.h4.text-success.font-weight-bold.mb-5 Pagination
+        nav aria-label=("Page navigation example")
+          ul.pagination.pagination-sm
+            li.page-item
+              a.page-link href="#"  1
+            li.page-item.active
+              a.page-link href="#"  2
+            li.page-item
+              a.page-link href="#"  3
+            li.page-item
+              a.page-link href="#"  4
+            li.page-item
+              a.page-link href="#"  5
+      .col-lg-7
+        h3.h4.text-success.font-weight-bold Images
+        .row
+          .col-md-3.col-6
+            .item.mt-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |Black sleeveless
+              .item__price
+                |￥ 2,500
+          .col-md-3.col-6
+            .item.mt-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |Black sleeveless
+              .item__price
+                |￥ 2,500
+    .section
+      .container
+        h2.mb-5
+          span 5 Column
+        .row.row-items-5
+          .col-2dot4.col-md-2dot4
+            .item.mb-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |ブラック ノースリーブ
+              .item__price
+                |￥ 2,500
+          .col-2dot4.col-md-2dot4
+            .item.mb-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |ブラック ノースリーブ
+              .item__price
+                |￥ 2,500
+          .col-2dot4.col-md-2dot4
+            .item.mb-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |ブラック ノースリーブ
+              .item__price
+                |￥ 2,500
+          .col-2dot4.col-md-2dot4
+            .item.mb-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |ブラック ノースリーブ
+              .item__price
+                |￥ 2,500
+          .col-2dot4.col-md-2dot4
+            .item.mb-4
+              .item__image
+                =image_tag "paint.jpg", class: 'img-fluid'
+              .item__name.pt-2
+                |ブラック ノースリーブ
+              .item__price
+                |￥ 2,500
+
+    .section
+      .card
+        .card-body.bg-offwhite
+          .purchase.text-sm
+            .row
+              .col-sm-3.col-5
+                .text-secondary 購入日
+                .text-dark 2018 / 12 / 31
+              .col-sm-7.col-7
+                .text-secondary お届け住所
+                .text-dark 東京都渋谷区千駄ヶ谷4-16-7北参道DTビル5F
+            hr
+            .purchase__history-list
+              .purchase__history-info
+                .row
+                  .col-md-6
+                    .media.d-mb-2.d-mb-none
+                      = image_tag "paint.jpg", class: 'mr-3 avater-img rounded'
+                      .media-body
+                        = link_to "古川優香セレクト：ピンク ギンガム チェック オフショル トップス ", "#", class:'mt-0'
+                        .text-dark.mt-2 ￥ 2,500
+                  .col-md-6
+                    .row.purchase__history-btns
+                      .col
+                        button.btn.btn-outline-primary.btn-block.text-sm.btn-outline-primary-bgwhite.font-weight-300 type="button"  商品レビューを書く
+                      .col
+                        button.btn.btn-primary.btn-block.text-sm.font-weight-300 type="button"  再度購入する
+              .purchase__history-info
+                .row
+                  .col-md-6
+                    .media.d-mb-2.d-mb-none
+                      = image_tag "paint.jpg", class: 'mr-3 avater-img rounded'
+                      .media-body
+                        = link_to "古川優香セレクト：ピンク ギンガム チェック オフショル トップス ", "#", class:'mt-0'
+                        .text-dark.mt-2 ￥ 2,500
+                  .col-md-6
+                    .row.purchase__history-btns
+                      .col
+                        button.btn.btn-outline-primary.btn-block.text-sm.btn-outline-primary-bgwhite.font-weight-300 type="button"  商品レビューを書く
+                      .col
+                        button.btn.btn-primary.btn-block.text-sm.font-weight-300 type="button"  再度購入する
+              .purchase__history-info
+                .row
+                  .col-md-6
+                    .media.d-mb-2.d-mb-none
+                      = image_tag "paint.jpg", class: 'mr-3 avater-img rounded'
+                      .media-body
+                        = link_to "古川優香セレクト：ピンク ギンガム チェック オフショル トップス ", "#", class:'mt-0'
+                        .text-dark.mt-2 ￥ 2,500
+                  .col-md-6
+                    .row.purchase__history-btns
+                      .col
+                        button.btn.btn-outline-primary.btn-block.text-sm.btn-outline-primary-bgwhite.font-weight-300 type="button"  商品レビューを書く
+                      .col
+                        button.btn.btn-primary.btn-block.text-sm.font-weight-300 type="button"  再度購入する
+              .purchase__history-info
+                .row
+                  .col-md-6
+                    .media.d-mb-2.d-mb-none
+                      = image_tag "paint.jpg", class: 'mr-3 avater-img rounded'
+                      .media-body
+                        = link_to "古川優香セレクト：ピンク ギンガム チェック オフショル トップス ", "#", class:'mt-0'
+                        .text-dark.mt-2 ￥ 2,500
+                  .col-md-6
+                    .row.purchase__history-btns
+                      .col
+                        button.btn.btn-outline-primary.btn-block.text-sm.btn-outline-primary-bgwhite.font-weight-300 type="button"  商品レビューを書く
+                      .col
+                        button.btn.btn-primary.btn-block.text-sm.font-weight-300 type="button"  再度購入する
+
+    .section
+      h1 Comments
+      .row
+        .col-sm-8
+          .comment
+            form.mb-3
+              .input-group
+                input.form-control[type="text"]
+                .input-group-prepend
+                  button.btn.btn-primary
+                    |コメントする
+
+            .media
+              =image_tag "seller-img.png", class: 'align-self-start mr-2', width: '35'
+              .media-body
+                .mt-0.h4.mb-0
+                  strong.text-link 森ちゃん
+                  span.comment__text
+                    | はじめまして、ブラックの9は在庫ありますか？
+                .comment__sub-info.h5.mb-0
+                  span.comment__date.text-gray.mr-2 Nov 5
+                  span.text-link Reply
+
+            hr.mb-2.mt-2
+            .media
+              =image_tag "seller-img.png", class: 'align-self-start mr-2', width: '35'
+              .media-body
+                .mt-0.h4.mb-0
+                  strong.text-link 森ちゃん
+                  span.comment__text
+                    | はじめまして、ブラックの9は在庫ありますか？
+                .comment__sub-info.h5.mb-0
+                  span.comment__date.text-gray.mr-2 Nov 5
+                  span.text-link Reply
+                .media.mt-2
+                  =image_tag "seller-img.png", class: 'align-self-start mr-2', width: '30'
+                  .media-body
+                    .mt-0.h4.mb-0
+                      strong.text-link 森ちゃん
+                      span.comment__text
+                        | はじめまして、ブラックの9は在庫ありますか？
+                    .comment__sub-info.h5.mb-0
+                      span.comment__date.text-gray.mr-2 Nov 5
+                      span.text-link Reply
+
+            hr.mb-2.mt-2
+            .media
+              =image_tag "seller-img.png", class: 'align-self-start mr-2', width: '35'
+              .media-body
+                .mt-0.h4.mb-0
+                  strong.text-link 森ちゃん
+                  span.comment__text
+                    | はじめまして、ブラックの9は在庫ありますか？
+                .comment__sub-info.h5
+                  span.comment__date.text-gray.mr-2 Nov 5
+                  span.text-link Reply
+
+    .section
+      h1 Items Followed
+      .row
+        .col-md-3
+          ul.follow.mt-4.pl-0
+            li.follow__seller.d-flex.mb-2
+              .follow__seller-img.p-rlt.mr-2
+                =image_tag "seller-img.png", class: 'rounded-circle', width: '32', height: '32'
+                =image_tag "check-icon.png", class: "item__seller-check"
+              .follow__seller-name.mr-auto.d-flex.flex-wrap.align-content-center
+                =link_to "古川 優香", "#"
+            li.follow__seller.d-flex.mb-2
+              .follow__seller-img.p-rlt.mr-2
+                =image_tag "seller-img.png", class: 'rounded-circle', width: '32', height: '32'
+                =image_tag "check-icon.png", class: "item__seller-check"
+              .follow__seller-name.mr-auto.d-flex.flex-wrap.align-content-center
+                =link_to "古川 優香", "#"
+            li.follow__seller.d-flex.mb-2
+              .follow__seller-img.p-rlt.mr-2
+                =image_tag "seller-img.png", class: 'rounded-circle', width: '32', height: '32'
+                =image_tag "check-icon.png", class: "item__seller-check"
+              .follow__seller-name.mr-auto.d-flex.flex-wrap.align-content-center
+                =link_to "古川 優香", "#"
+        .col-md-9
+          .row
+            .col-sm-3
+              .item.mt-4
+                .item__image
+                  =image_tag "paint.jpg", class: 'img-fluid'
+                .item__dress-info.d-flex.mt-2
+                  .item__dress-seller.mr-2.p-rlt
+                    =image_tag "seller-img.png", class: 'rounded-circle', width: '32', height: '32'
+                    =image_tag "check-icon.png", class: "item__seller-check"
+                  .item__dress-detail.mr-auto
+                    small 古川 優香 - Pick
+                    .item__name
+                      = truncate("ブラック ロングスカ..asdfasfd", length: 13)
+                    .item__price
+                      |￥ 2,500
+            .col-sm-3
+              .item.mt-4
+                .item__image
+                  =image_tag "paint.jpg", class: 'img-fluid'
+                .item__dress-info.d-flex.mt-2
+                  .item__dress-seller.mr-2.p-rlt
+                    =image_tag "seller-img.png", class: 'rounded-circle', width: '32', height: '32'
+                    =image_tag "check-icon.png", class: "item__seller-check"
+                  .item__dress-detail.mr-auto
+                    small 古川 優香 - Pick
+                    .item__name
+                      = truncate("ブラック ロングスカ..asdfasfd", length: 13)
+                    .item__price
+                      |￥ 2,500
+            .col-sm-3
+              .item.mt-4
+                .item__image
+                  =image_tag "paint.jpg", class: 'img-fluid'
+                .item__dress-info.d-flex.mt-2
+                  .item__dress-seller.mr-2.p-rlt
+                    =image_tag "seller-img.png", class: 'rounded-circle', width: '32', height: '32'
+                    =image_tag "check-icon.png", class: "item__seller-check"
+                  .item__dress-detail.mr-auto
+                    small 古川 優香 - Pick
+                    .item__name
+                      = truncate("ブラック ロングスカ..asdfasfd", length: 13)
+                    .item__price
+                      |￥ 2,500
+            .col-sm-3
+              .item.mt-4
+                .item__image
+                  =image_tag "paint.jpg", class: 'img-fluid'
+                .item__dress-info.d-flex.mt-2
+                  .item__dress-seller.mr-2.p-rlt
+                    =image_tag "seller-img.png", class: 'rounded-circle', width: '32', height: '32'
+                    =image_tag "check-icon.png", class: "item__seller-check"
+                  .item__dress-detail.mr-auto
+                    small 古川 優香 - Pick
+                    .item__name
+                      = truncate("ブラック ロングスカ..asdfasfd", length: 13)
+                    .item__price
+                      |￥ 2,500

@@ -1,0 +1,131 @@
+.category{
+  &__container{
+    @media (max-width: 767px){
+      margin-left: 0;
+    }
+  }
+  &__type{
+    border-top: 1px solid $lightgray;
+  }
+  &__subtitle{
+    color: $primary;
+  }
+  &__item{
+    margin-bottom: 0;
+    li{
+      margin-bottom: 16px;
+    }
+    a{
+      color: $optgray;
+      margin-bottom: 0;
+      &:before{
+        content: "";
+        width: 10px;
+        border-bottom: 2px solid;
+        border-color: $optgray;
+        position: absolute;
+        left: 24px;
+        margin-top: 8px;
+      }
+      &:hover,
+      &:focus{
+        color: $primary;
+        text-decoration: underline;
+        &::before{
+          border-color: $primary;
+        }
+      }
+    }
+  }
+  &__m-group{
+    line-height: 30px;
+    vertical-align: middle;
+    margin-bottom: $space-xm;
+    h5{
+      color: $secondary;
+     }
+  }
+  &__similar-title{
+    margin-top: $space-xs;
+  }
+  &__similar{
+    width: calc(100% - 100px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-left: $space-s;
+    &::-webkit-scrollbar{
+      display: none;
+      background: transparent;
+    }
+    ul{
+      display: table;
+    }
+    li{
+      display: table-cell;
+      padding: 0 6px;
+    }
+    a{
+      padding: 4px 12px;
+      border-radius: 25px;
+      background: $offwhite;
+      border: 1px solid $lightgray;
+      font-size: 13px;
+      white-space: nowrap;
+      color: $dark;
+    }
+  }
+
+}
+
+//slide menu Category
+
+%accordion-icon{
+  content: '';
+  position: absolute;
+  right: 24px;
+  height: 10px;
+  width: 10px;
+  z-index: 9;
+  display: inline-block;
+}
+.sidebar{
+  max-width: 200px;
+}
+
+//To handle accordion issue on iphone
+#accordion{
+  .card-header{
+    cursor: pointer;
+  }
+}
+.slide-menu{
+  .category{
+    &__item{
+      li{
+        border-bottom: 1px solid $lightgray;
+        padding: 1rem 0 ;
+        margin-bottom: 0px;
+        padding-left: 24px;
+      }
+    }
+    &__subtitle.collapsed{
+      &:after{
+        @extend %accordion-icon;
+        background: asset-url('plus.png') no-repeat;
+        top: 21px;
+      }
+    }
+    &__subtitle{
+      &:after{
+        @extend %accordion-icon;
+        background: asset-url('minus.png') no-repeat;
+        top: 26px;
+      }
+    }
+  }
+}
+
+.sub-active{
+  color: $primary !important;
+  text-decoration: underline;
+}

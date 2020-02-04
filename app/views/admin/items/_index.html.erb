@@ -1,0 +1,27 @@
+<% context.instance_eval do
+  column :id
+  column t('Item Name'), :name
+  column t('Seller Name') do |s|
+    s.seller.try(:name) if s.seller.present?
+  end
+  column t('Item Price'), :price
+  column t('Brand') do |b|
+    b.brand.try(:name) if b.brand.present?
+  end
+  column do |c|
+    if c.publish
+      if params[:controller] == "admin/items"
+        link_to t("Unpublish"), "/unpublish_item/#{c.id}"
+      elsif params[:controller] == "seller_admins/items"
+        link_to t("Unpublish"), "/unpublish_seller_item/#{c.id}"
+      end
+    else
+      if params[:controller] == "admin/items"
+        link_to t("publish"), "/publish_item/#{c.id}"
+      elsif params[:controller] == "seller_admins/items"
+        link_to t("publish"), "/publish_seller_item/#{c.id}"
+      end
+    end
+  end
+  actions
+end %>

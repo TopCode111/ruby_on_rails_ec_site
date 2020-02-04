@@ -1,0 +1,10 @@
+- if @brands.present?
+  .category.slide-menu__category.mt-3
+    h1 = t('Brand')
+    #accordion
+      - @brands.each do |brand|
+        = link_to brand_path(brand.name) do
+          .card
+            .card-header 
+              = brand.name
+                  

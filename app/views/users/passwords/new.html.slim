@@ -1,0 +1,15 @@
+section.authentication
+  .authentication__container.mt-3.mx-auto
+    .card
+      .card-body
+        h1.card-title
+          = t('Forgot your password')
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post , "data-parsley-validate" => true}) do |f|
+          .field.form-group
+            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t("Email address"), required: '', class:'form-control mt-3','data-parsley-remote' => '/forgot_password_authorization', 'data-parsley-remote-message' => t('This email is invalid')
+            = f.submit t("Send reset password instruction"), class: 'btn btn-primary btn-block mt-3 mb-4'
+
+        - if params[:controller] == 'carts' && params[:action] == 'cart_new_password'
+          = link_to t('Login'), cart_path
+        -else
+          = render "users/shared/links"

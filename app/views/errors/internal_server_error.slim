@@ -1,0 +1,14 @@
+= title "ただいまサーバーが混み合っています"
+= meta_description
+.container.m-20
+  -breadcrumb :internal_server_error
+  = render partial: 'shared/search-form'
+  = render partial: 'shared/bread_crumb'
+.main-content
+  .status-code
+    | 500
+  .status-message.error_500
+    p
+      | ただいまサーバが大変混み合っています。
+    p.status
+      | しばらく時間をおいてから、アクセスしてください。

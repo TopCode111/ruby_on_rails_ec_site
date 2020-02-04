@@ -1,0 +1,39 @@
+.col-md-3.d-none.d-md-block.col-0
+  .sidebar
+    h1
+      = t('Search')
+    = form_for(:search, url: search_path, method: :get) do |f|
+      .search-filter
+        .form-group.mt-4
+          = f.text_field :search_keyword, value: params[:search].present? && params[:search][:search_keyword].present? ? params[:search][:search_keyword] : '', class:"form-control", placeholder: t('Keyword')
+        hr
+        .form-group
+          = f.select(:category, options_for_select(@categories.map{|c| [c.title, c.id]}, selected: "#{params[:search].present? && params[:search][:category].present? ? params[:search][:category] : ''}"), {prompt: t('Category')}, {class:'form-control js_search_category'})
+        .form-group
+          = f.select(:sub_category, "", {prompt: t('Sub Category')}, {class:'form-control js_search_subcategory'})
+        hr
+        .form-group
+          = f.text_field :search_brand, value: params[:search].present? && params[:search][:search_brand].present? ? params[:search][:search_brand] : '', class:"form-control", placeholder: t('Brand name')
+        hr
+        .row
+          .col-md-5
+            = f.number_field :low_price, value: params[:search].present? && params[:search][:low_price].present? ? params[:search][:low_price] : '', class:'form-control', placeholder: '0'
+          .col-md-2.clearfix
+            h1
+              | ~
+          .col-md-5
+            = f.number_field :high_price, value: params[:search].present? && params[:search][:high_price].present? ? params[:search][:high_price] : '', class:'form-control', placeholder: '10,000'
+        hr
+        .row.form-group.ml-0.mr-0
+          - Size.all.each do |c|
+            .col-6.custom-control.custom-checkbox.pb-3
+              = f.check_box :sizes,{ multiple: true, class:'custom-control-input', :checked=>"#{params[:search].present? && (params[:search][:sizes].present? && params[:search][:sizes].map(&:to_i).include?(c.id)) ? 'checked' : ''}"}, c.id, nil
+              label.custom-control-label for="search_sizes_#{c.id}"
+                = "#{c.size}"
+        hr
+        .form-group.custom-control.custom-checkbox
+          = f.check_box :free_shipping, {class: 'custom-control-input', checked: "#{params[:search].present? && params[:search][:free_shipping] ? 'checked' : ''}"}, true, false
+          = f.label :free_shipping, t('Free shipping'), class:'custom-control-label'
+        .actions
+          = submit_tag t('Search'), class: 'btn btn-primary btn-block btn-lg'
+

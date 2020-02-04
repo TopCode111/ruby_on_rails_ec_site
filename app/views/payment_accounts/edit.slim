@@ -1,0 +1,9 @@
+=title "お支払い方法を入力する"
+=meta_description
+.container.m-20
+  -if params[:controller] == "payment_accounts" && params[:order_id].present?
+    - breadcrumb :checkout_payment_info, params[:order_id]
+  -else
+    - breadcrumb :payment_info
+  = render partial: 'shared/bread_crumb'
+= render 'form'

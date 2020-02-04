@@ -1,0 +1,21 @@
+-breadcrumb :followings
+= title "フォロー中バイヤーの商品一覧"
+= meta_description
+= render "shared/search_bar"
+.container.mt-4
+  - if @followings.present?
+    .row.category.col-spacing-sm
+      = render "follow_sidebar"
+      = render "following_feeds"
+    - if @related_sellers.present?
+      hr
+      h1.mb-4.m-20 =t("Recommended buyers")
+      = render 'related_seller'
+    - if @related_items.present?
+      hr
+      h1.mb-4.m-20 =t("Related items")
+      .col-spacing-sm
+        = render partial:'shared/suggestion_item_list', locals: {items: @related_items}
+  - else
+    h3.pl-3
+      = t("No followings found")

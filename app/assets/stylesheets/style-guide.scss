@@ -1,0 +1,137 @@
+body main{
+  min-height: calc(100% - 172px);
+  @media(max-width: 767px){
+    min-height: calc(100% - 185px);
+  }
+}
+.container{
+  @media(min-width: 1200px){
+    max-width: 940px;
+  }
+}
+@include media-breakpoint-down(md){
+  .col-12{
+    padding: 0 $space-xm;
+  }
+}
+.ct-text-purple {
+ color:#5e72e4
+}
+.ct-text-purple-bright {
+ color:#9da9f2
+}
+.ct-tabs-example .nav-link i {
+ margin-right:5px
+}
+.color-swatch {
+ margin:1rem 0;
+ border-radius:.25rem;
+ background-color:#f4f5f7
+}
+.color-swatch:after {
+ display:table;
+ clear:both;
+ content:' '
+}
+.color-swatch-header {
+ position:relative;
+ height:0;
+ padding-bottom:50%;
+ border:1px solid transparent;
+ border-radius:.25rem .25rem 0 0
+}
+.color-swatch-header.is-light {
+ border-color:#c1c7d0
+}
+.color-swatch-header .pass-fail {
+ position:absolute;
+ bottom:0;
+ width:100%
+}
+.color-swatch-header .pass-fail-item-wrap {
+ position:relative;
+ left:50%;
+ float:left;
+ transform:translateX(-50%)
+}
+.color-swatch-header .pass-fail-item-group {
+ display:inline-block;
+ padding:0 5px
+}
+.color-swatch-header .pass-fail-item {
+ display:inline-block;
+ float:left;
+ padding:2px;
+ text-align:center
+}
+.color-swatch-header .pass-fail-item.white .example {
+ color:#fff
+}
+.color-swatch-header .pass-fail-item.small .example {
+ font-size:10px
+}
+.color-swatch-header .pass-fail-item .lozenge {
+ font-size:11px;
+ font-weight:600;
+ line-height:10px;
+ padding:2px 4px;
+ letter-spacing:.05em;
+ text-transform:uppercase;
+ color:#fff;
+ border-radius:4px;
+ background:#000
+}
+.color-swatch-body {
+ position:relative;
+ left:50%;
+ float:left;
+ padding:10px 0;
+ transform:translateX(-50%)
+}
+.color-swatch-body .prop-item-wrap {
+ float:left;
+ min-width:65px;
+ padding:0 15px
+}
+.color-swatch-body .prop-item {
+ padding:15px 0
+}
+.color-swatch-body .prop-item .label {
+ font-size:11px;
+ line-height:16px;
+ text-transform:uppercase;
+ color:#62748c
+}
+.color-swatch-body .prop-item .value {
+ font-size:14px
+}
+.bg-violet{
+  background-color: $violet !important;
+}
+.bg-deepviolet{
+  background-color: $deepviolet !important;
+}
+.bg-lightviolet{
+  background-color: $lightviolet !important;
+}
+.bg-concrete{
+  background-color: $concrete !important;
+}
+.bg-lightgray{
+  background-color: $lightgray !important;
+}
+.bg-offwhite{
+  background-color: $offwhite!important;
+}
+.bg-optgray{
+  background-color: $optgray !important;
+}
+.bg-white{
+  background-color: $white !important;
+}
+
+//Form
+select{
+  background: $offwhite asset-url('arrow-icon.png') no-repeat;
+  background-position: right 8px center;
+}

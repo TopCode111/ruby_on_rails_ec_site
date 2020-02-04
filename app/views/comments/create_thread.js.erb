@@ -1,0 +1,13 @@
+$('.comment').html("<%= escape_javascript render partial: '/items/comment', locals: {item: @item, all_comments: @all_comments} %>");
+<% if @all_comments.count >= 10%>
+  var right_url = "/items/"+<%=@item.id%>+"?" + $('.right-paginate').attr('href').split('&')[1]
+  var left_url = "/items/"+<%=@item.id%>+"?" + $('.left-paginate').attr('href').split('&')[1]
+  $('.right-paginate').attr('href', right_url);
+  $('.left-paginate').attr('href', left_url);
+<%end%>
+$(".comment-one-reply-<%=@comment.id%>").hide();
+$('.js-threads').hide();
+$(".comment-<%=@comment.id%>").show();
+<% if @comment.present? && @new_thread.present? %>
+  $(".comment-<%=@comment.id%>").html("<%= escape_javascript render partial: '/items/child_comment', locals: {item: @comment.commentable, comment: @comment} %>");
+<%end%>

@@ -1,0 +1,50 @@
+= title t('Register')
+= meta_description
+section.authentication
+  .authentication__container.mt-3.mx-auto
+    .card
+      .card-body.registration
+        = form_for(resource, as: resource_name, url: registration_path(resource_name),:html => {"data-parsley-validate" => true, class:"js-parsley-validate"}) do |f|
+          .form-section
+            .card-title
+              h1
+                = t('Create an account')
+              .field.form-group.mt-3
+                = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t('Email address'), class: 'form-control', required: true, 'data-parsley-remote' => '/validate_email_uniqueness', 'data-parsley-remote-message' => t('This email is already exists')
+                = f.hidden_field :type, value: 'Buyer'
+              = f.fields_for :profile do |ff|
+                .row
+                  .col
+                    .field.form-group.clearfix
+                      = ff.text_field :last_name, class: 'form-control', placeholder: t('Last name'), required: true
+                  .col
+                    .field.form-group.clearfix
+                      = ff.text_field :first_name, class: 'form-control', placeholder: t('First name'), required: true
+              .field.form-group
+                = f.password_field :password, autocomplete: "new-password", class: 'form-control user_password', placeholder: t('Password'), required: true, data: { 'parsley-minlength' => "8"}
+              .field.form-group.mt-3
+                = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control js_password_confirmation',placeholder: t('Password confirmation'), required: true, data: {'parsley-equalto' => '#user_password'}
+          .form-section
+            .card-title
+              h1
+                = t('Confirm your account info')
+              h3.mt-4.font-weight-bold
+                = t('Email address')
+              h3.email
+              h3.mt-4.font-weight-bold
+                = t('Name')
+              h3.name
+              h3.mt-4.font-weight-bold
+                = t('Password')
+              h3.password
+          .form-navigation.clearfix
+            button.next.btn.btn-primary.btn-block.mt-3.register-confirm type="button"  = t('Register')
+            input.btn.btn-primary.pull-right.btn-block.mt-3.mb-3.button_margin_fix type="submit" value=t('Register')
+            .previous.back-link
+              = t('Back')
+        .mt-3
+          .login-link
+            - if params[:controller] == 'carts' && params[:action] == 'cart_user_register'
+              = link_to t('Login'), cart_path
+            -else
+              = render "users/shared/links"

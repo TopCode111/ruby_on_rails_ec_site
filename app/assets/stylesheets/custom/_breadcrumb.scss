@@ -1,0 +1,11 @@
+.breadcrumb{
+  background-color: transparent;
+  padding: 0;
+  a{
+    color: $dark;
+    display: inline-block;
+  }
+  li.active{
+    color: $secondary;
+  }
+}

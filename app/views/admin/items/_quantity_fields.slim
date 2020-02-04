@@ -1,0 +1,5 @@
+.nested-fields.item_fieldset
+  = f.inputs do
+    =f.input :size_id, as: :select, :collection => Size.all.map {|s| ["#{s.size}", s.id]}, input_html: {class: 'quantity-select'},label: t('Size Type'), include_blank: t('Select Size'), required: true
+    =f.input :quantity, required: true, label: t('Quantity')
+    =link_to_remove_association t("remove"), f, class: 'button has_many_remove remove_btn'

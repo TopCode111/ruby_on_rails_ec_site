@@ -1,0 +1,28 @@
+// Place all the styles related to the errors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-content{
+  color: #888;
+  text-align: center;
+  margin: 0 auto;
+  width:300px;
+  margin-top: 180px;
+  margin-bottom: 180px;
+}
+.main-content .error_500{
+  width:320px;
+}
+
+.status-code{
+  font-size: 80px;
+}
+.status-message{
+  p{
+    font-size: 16px;
+  }
+ p.status{
+    font-size: 12px;
+  }
+}
+

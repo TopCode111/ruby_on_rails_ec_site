@@ -1,0 +1,86 @@
+html{
+  position: relative;
+  height: 100%;
+}
+body{
+  height: 100%;
+  margin-bottom: -107px;
+}
+.nav a.btn-sm{
+  border-radius: 100px;
+  padding: 4px 16px;
+  font-weight: normal;
+}
+.navbar{
+  @media(max-width: 767px){
+    padding: 8px 10px;
+  }
+}
+.navbar-nav{
+  .nav-item{
+    display: inline-block;
+  }
+  .nav-link{
+    color: $dark;
+  }
+}
+.navbar-brand{
+  img {
+    height: 30px;
+    width: auto;
+    @media(max-width: 767px){
+      height: 24px;
+    }
+  }
+}
+.search{
+  .form-control{
+    height: 34px;
+  }
+}
+.burger{
+  height: 24px;
+  width: 24px;
+  &__toggle{
+    &:before,
+    &:after{
+      height: 2px;
+      width: 24px;
+      border-radius: 1px;
+      content: '';
+      background: $dark;
+      position: absolute;
+    }
+    &:before{
+      margin-top: 12px;
+    }
+  }
+}
+.cart{
+  position: relative;
+  &__number{
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    font-size: 12px;
+    color: $primary;
+    font-weight: bold;
+
+  }
+  @media (max-width: 520px){
+    &__number{
+      font-size: 11px;
+    }
+  }
+}
+
+//Mobile
+.m-header{
+  border-bottom: 1px solid $lightgray;
+}
+
+@include media-breakpoint-down(md){
+  .m-20{
+    padding: 0 20px;
+  }
+}

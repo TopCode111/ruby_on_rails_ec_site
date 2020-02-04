@@ -1,0 +1,40 @@
+footer{
+  padding-top: $space-xxm;
+  font-size: 12px;
+  bottom: 0;
+  width: 100%;
+  a,.footer{
+    color: $dark;
+  }
+  .footer{
+    border-top: 1px solid $lightgray;
+  }
+}
+@media(max-width: 767px){
+  footer{
+    padding-top: $space-xxm;
+    .footer{
+      padding-top: $space-xm + $space-s;
+      border-top: 1px solid $lightgray;
+    }
+}
+  .footer{
+    padding: $space-xxm $space-s;
+  }
+}
+
+.session-page{
+  footer{
+    padding-top: 0;
+    .footer{
+      @include media-breakpoint-up(md){
+        border-top: none;
+      }
+    }
+  }
+  .breadcrumb-bar{
+    @include media-breakpoint-up(md){
+      border-bottom: none;
+    }
+  }
+}

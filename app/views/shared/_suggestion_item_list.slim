@@ -1,0 +1,15 @@
+.col-spacing-sm__item-list
+  .row.row-items-5
+    -items.each do |item|
+      .col-2dot4.col-md-2dot4
+        .item.mb-4
+          =link_to item_path(item) do
+            .item__image
+              -if item.images.present?
+                =image_tag item.first_image.url(:medium), class: 'img-fluid'
+              -else
+                =image_tag 'default_item_image.png', class: 'img-fluid'
+            .item__name.pt-2
+              =truncate("#{item.name}")
+            .item__price
+              = number_to_currency(item.price, unit: "¥", format: "%u%n", precision: 0)

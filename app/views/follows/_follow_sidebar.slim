@@ -1,0 +1,12 @@
+.col-md-3.d-none.d-md-block.col-0
+  .sidebar
+    h1.pb-3 =t('Buyer during follow')
+    - @followings.each do |following|
+      ul.follow.mt-4.pl-0
+        li.follow__seller.d-flex.mb-2
+          .follow__seller-img.p-rlt.mr-2
+            =image_tag following.decorate.avatar, class: 'rounded-circle', width: '32', height: '32'
+            =image_tag "check-icon.png", class: "item__seller-check"
+          .follow__seller-name.mr-auto.d-flex.flex-wrap.align-content-center
+            =link_to following.name, seller_profile_path(following)
+

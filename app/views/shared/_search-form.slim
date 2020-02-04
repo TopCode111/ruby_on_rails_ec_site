@@ -1,0 +1,107 @@
+.search
+  form action="/search"
+    .d-flex.flex-row
+      .search__field
+        .form-group
+          input.form-control placeholder=t("Search by brand name / keyword") type="text" name="keyword" autocomplete="off"
+
+      .search__categories.pl-3.d-none.d-md-block.search__dropdown-tabs
+        .dropdown
+          button#dropdownMenuButton.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+            = t('Category')
+          .dropdown-menu[aria-labelledby="tab"]
+            .row
+              .col-sm-3
+                ul#myTab.nav.d-block.nav-tabs[role="tablist"]
+                  - @categories.each do |category|
+                    li.nav-item
+                      a.nav-link[data-toggle="tab" href="##{category.title.split.join("-")}" role="tab" aria-controls="#{category.title}" aria-selected="false" id="#{category.title.split.join("-")}-tab" class="category_route"]
+                        = category.title
+              .col-sm-9
+                .tab-content
+                  - @categories.each do |category|
+                    - category.title.split.join("-")
+                    .tab-pane[role="tabpanel" aria-labelledby="#{category.title.split.join("-")}-tab" id="#{category.title.split.join("-")}"]
+                      .row
+                         .col-sm-4
+                          .subcategory--link
+                            a href="#{category_path(category.title)}"
+                              = category.title + " - All"
+                         - category.sub_categories.all.each do |sub_category|
+                          .col-sm-4
+                            .subcategory--link
+                              a href="#{sub_category_path(category.title, sub_category.name)}"
+                                = sub_category.name
+
+      .search__brand.pl-3.d-none.d-md-block.search__dropdown-tabs
+        .dropdown
+          button#dropdownMenuButton.dropdown-toggle[type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+            = t('Brand')
+          .dropdown-menu[aria-labelledby="tab"]
+            .row.brand
+             - @brands.each do |brand|
+              .col-md-3.brand__name.pb-3
+                a.brand--link[data-toggle="tab" href= "#{brand_path(brand.name)}" role="tab" aria-controls="chanel" aria-selected="false"]
+                  = brand.name
+      - if params[:controller] == "items" && params[:action] == "search"
+        .m-search.d-block.d-md-none.search-filter
+          .search-filter--btn
+            |絞り込む
+          .search-sidebar.slide-menu
+            .slide-menu__overlay
+            .search-filter__list#JsSearch-filter
+              = form_for(:search, url: search_path, method: :get) do |f|
+                .search-filter__header
+                  h1.mb-0
+                    = t('Search')
+                  .search-filter__close
+                    =image_tag "close.png"
+                .search-filter__body
+                  .form-group
+                    = f.text_field :search_keyword, value: params[:search] && params[:search][:search_keyword].present? ? params[:search][:search_keyword] : '', class:"form-control", placeholder: t('Keyword')
+                  hr
+                  .row
+                    .col-6
+                       = f.select(:category, options_for_select(@categories.map{|c| [c.title, c.id]}, selected: "#{params[:search].present? && params[:search][:category].present? ? params[:search][:category] : ''}"), {prompt: t('Category')}, {class:'form-control js_search_category'})
+                    .col-6
+                      = f.select(:sub_category, "", {prompt: t('Sub Category')}, {class:'form-control js_search_subcategory'})
+                  hr
+                  .form-group
+                    = f.text_field :search_brand, value: params[:search] && params[:search][:search_brand].present? ? params[:search][:search_brand] : '', class:"form-control", placeholder: t('Brand name')
+                  hr
+                  .row
+                    .col-4
+                      |価格帯
+                    .col-8
+                      .row
+                        .col
+                          = f.number_field :low_price, value: params[:search] && params[:search][:low_price].present? ? params[:search][:low_price] : '', class:'form-control', placeholder: '0'
+                        .col-1.mr-2
+                          h1
+                            | ~
+                        .col
+                          = f.number_field :high_price, value: params[:search] && params[:search][:high_price].present? ? params[:search][:high_price] : '', class:'form-control', placeholder: '10,000'
+                  hr
+                  .row
+                    .col-4
+                      | サイズ
+                    .col-8
+                      .row.ml-0.mr-0
+                        - Size.all.each do |c|
+                          .col-6.custom-control.custom-checkbox.pb-3
+                            = f.check_box :sizes, { multiple: true, class:'custom-control-input', :checked=>"#{params[:search].present? && (params[:search][:sizes].present? && params[:search][:sizes].map(&:to_i).include?(c.id)) ? 'checked' : ''}", id:"size_#{c.id}"}, c.id, nil
+                            label.custom-control-label for="size_#{c.id}"
+                              = "#{c.size}"
+                  hr
+                  .row
+                    .col-4
+                      |送料
+                    .col-8
+                      .form-group.custom-control.custom-checkbox
+                        = f.check_box :free_shipping, {class: 'custom-control-input', id:"free_shipping", checked: "#{params[:search].present? && params[:search][:free_shipping] ? 'checked' : ''}"}, true, false
+                        label.custom-control-label for='free_shipping'
+                          = t('Free shipping')
+                .search-filter__footer
+                  .actions
+                    = submit_tag t('Search'), class: 'btn btn-primary btn-block btn-lg'
+

@@ -1,0 +1,8 @@
+- if sellers.present?
+  .category__type.mt-4.pt-4
+    h1
+      = t('Picker')
+    - sellers.each do |seller|
+      ul.list-unstyled.mt-3
+        li.category__subtitle.mb-3.sidebar_active
+          = link_to seller.name, seller_profile_path(seller), class: 'text-dark'

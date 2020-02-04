@@ -1,0 +1,8 @@
+-if params[:controller]=='admin/items'
+  =semantic_form_for @item, url: "#{@item.new_record? ? admin_items_path : admin_item_path(@item.id)}",input_html:{ method: "#{@item.new_record? ? :post : :patch }"}, html: {"data-parsley-validate" => true, class:"button-click"}, builder: ActiveAdmin::FormBuilder do |f|
+    = render "form_contents", f: f
+
+-elsif params[:controller] == 'seller_admins/items'
+  =semantic_form_for @item, url: "#{@item.new_record? ? seller_admins_items_path : seller_admins_item_path(@item.id)}",input_html:{ method: "#{@item.new_record? ? :post : :patch }"}, html: {"data-parsley-validate" => true, class:"button-click"}, builder: ActiveAdmin::FormBuilder do |f|
+    = render "/admin/items/form_contents", f: f
+

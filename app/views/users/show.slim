@@ -1,0 +1,65 @@
+=title @seller.profile.name
+=meta_description @seller.profile.description
+.container.m-20
+  - breadcrumb @seller
+  = render "shared/search-form"
+  = render "shared/bread_crumb"
+.container
+  .row
+    = render "shared/sidebar"
+    - if @seller.present?
+      = title @seller.name
+      = meta_description @seller.description
+      .col-md-9.ml-sm-auto.col-12.seller__column
+        .category__container.items
+          .row
+            .col-md-6.col-12.seller__content-img
+              - if @seller.photo.present?
+                = image_tag @seller.photo.url(:large), class: "img-fluid"
+              - else
+                = image_tag 'default_avatar.png', class: "img-fluid"
+            .col-md-6.col-12.seller__content-descp
+              .clearfix
+                .pull-left.seller__name-image
+                  .media
+                    - if @seller.photo.present?
+                      = image_tag @seller.photo.url(:small), class:'rounded-circle', width: '48', height: '48'
+                    - else
+                      = image_tag 'default_avatar_small.png', class:'rounded-circle'
+                    .media-body
+                      .pl-2
+                        span = @seller.name
+                        .seller__rating
+                          -if @seller.reviews.present?
+                            -@seller.average_rating.times do
+                              .fa.fa-star
+                            -@seller.seller_blank_star.times do
+                              .fa.fa-star.disabled
+                          -else
+                            .seller_rating
+                              -5.times do
+                                .fa.fa-star.disabled
+                .pull-right.seller-follow
+                  - if current_user.present? && current_user.following?(@seller)
+                    = link_to t('Following'), unfollow_path(@seller), method: :post, remote: true, class: 'btn btn-primary btn-block btn-follow js-follow'
+                  -else
+                    = link_to t('Follow'), follow_path(@seller), method: :post, remote: current_user.present?, class: 'btn btn-outline-primary btn-block btn-follow js-follow'
+              .follow-count
+                = render 'follower_count'
+              .seller__descp
+                = @seller.description
+              .pb-4.seller__social
+                = link_to "Instagram", @seller.instagram_url if @seller.instagram_url.present?
+                = link_to "Facebook", @seller.facebook_url if @seller.facebook_url.present?
+                = link_to "Twitter", @seller.twitter_url if @seller.twitter_url.present?
+                = link_to "LINE", @seller.line_url if @seller.line_url.present?
+          h1.category__type.pt-4.pb-4
+            = t('Select item')
+        .category.col-spacing-sm
+          = render partial:'shared/item_list', locals: {items: @items}
+    - else
+      = t('No Seller Found')
+
+
+
+

@@ -1,0 +1,49 @@
+section.authentication
+  .authentication__container.mt-3.mx-auto
+    .card
+      .card-body
+        = form_tag "#{@payment.present? ? payment_account_path(@payment) : payment_accounts_path}", method: "#{@payment.present? ? 'patch' : 'post'}", "data-parsley-validate" => true, class: 'payment_form'
+          h1.card-title
+            = t('Register payment method')
+          .field.form-group
+            = label_tag "Card Number", t('Card number'), required: true, class:'headline_color mt-4'
+            = hidden_field_tag 'card_no','', data:{stripe: "number"}
+            = hidden_field_tag 'expiry_month', '', data:{stripe:"exp-month"}
+            = hidden_field_tag 'expiry_year', '', data:{stripe: "exp-year"}
+            = hidden_field_tag 'cvc', '', data:{stripe: "cvv"}
+            .row
+              .col-3
+                = text_field_tag :card_no1, nil, class: "form-control", placeholder: '0000', maxlength: 4
+              .col-3
+                = text_field_tag :card_no2, nil, class: "form-control", placeholder: '0000', maxlength: 4
+              .col-3
+                = text_field_tag :card_no3, nil, class: "form-control", placeholder: '0000', maxlength: 4
+              .col-3
+                = text_field_tag :card_no4, nil, class: "form-control", placeholder: '0000', maxlength: 4
+            .error-card-no
+          .field.form-group
+            = label_tag "Card Expiry", t('Expiration date'), required: true, class:'headline_color'
+            .row
+              .col-3
+                = select_tag :exp_month, options_for_select(Date::MONTHNAMES.compact.each_with_index.map { |name,i| ["#{i+1}", i+1] }), include_blank: '--', class: "form-control"
+              h2.text-dark.mt-2
+                = t('m')
+              .col-3
+                = select_tag :exp_year, options_for_select((Date.today.year..(Date.today.year+10)).to_a), include_blank: '--', class: "form-control"
+              h2.text-dark.mt-2
+                = t('y')
+            .error_expiration
+          .field.form-group
+            .d-flex.mt-4
+              h2.text-danger
+                = t('Required')
+              h2.headline_color
+                | &nbsp;
+                = t('Security code')
+            .row
+              .col-4
+                = text_field_tag :card_verification, nil, class: "form-control", placeholder: '半角数字', type: 'password', maxlength: 3
+            .error-security-card
+          .actions.mt-4
+            = submit_tag t("Register"), class:'btn btn-primary btn-block mb-4 js-payment_submit', data:{disable_with: t('Register')}
+

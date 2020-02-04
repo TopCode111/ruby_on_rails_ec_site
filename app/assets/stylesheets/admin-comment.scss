@@ -1,0 +1,24 @@
+.comment{
+  &__username{
+    font-size: 14px;
+    color: #754DEA;
+    font-weight: bold;
+  }
+  &__msg{
+    margin-left: 5px;
+  }
+  &__child{
+    margin-left: 40px;
+    margin-top: 5px;
+  }
+  &__main{
+    margin-bottom: 2px;
+  }
+  &__reply{
+    margin-top: 30px;
+  }
+  &__date{
+    font-size: 11px;
+    color: #888181;
+  }
+}

@@ -1,0 +1,19 @@
+- comment.children.each do |c|
+  .media.mt-2
+    =image_tag c.user.decorate.avatar, class: 'rounded-circle align-self-start mr-2', width: '30'
+    .media-body
+      .mt-0.h4.mb-0
+        strong.text-link #{c.user.decorate.name}
+        span.comment__text
+          | &nbsp;
+          = c.body
+      .comment__sub-info.h5.mb-0
+        span.comment__date.text-gray.mr-2 #{comment.created_at.strftime("%b %d")}
+- if current_user.present?
+  = form_tag item_comment_create_thread_path(item, comment), method: :post, class: 'mb-2 mt-2', remote: true do
+    .input-group
+      =text_field_tag :comment, '', class: 'form-control', autocomplete: 'off', placeholder: 'コメント'
+      =hidden_field_tag :page, @page
+      .input-group-prepend
+        button.btn.btn-primary
+          |コメントする

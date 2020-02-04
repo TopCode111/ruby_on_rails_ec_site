@@ -1,0 +1,25 @@
+.panel
+  h3 Comments (#{@item.root_comments.count})
+  .panel_contents
+    .comment__main
+      strong.comment__username #{@comment.user.decorate.name}
+      span.comment__msg #{@comment.body}
+    .comment__date #{@comment.created_at.strftime("%b %d")}
+    - if @comment.has_children?
+      -@comment.children.each do |child|
+        .comment__child
+          strong.comment__username #{child.user.decorate.name}
+          span.comment__msg #{child.body}
+          .comment__date #{@comment.created_at.strftime("%b %d")}
+    .comment__reply
+      - if params[:controller] == "admin/item_comments"
+        =semantic_form_for :item_comment, url: create_comment_thread_path(@comment), input_html:{ method: :post } do |f|
+          =f.inputs do
+          =f.input :body, label: false, placeholder: 'コメント', input_html: {rows: 3}, input_html: {autocomplete: "off"}
+          =f.input :user_id, input_html: {value: @item.seller.id}, as: :hidden
+          =f.action :submit, label: 'コメントする', as: :button , button_html: {class: 'hide_list pwd-button'}
+      -else
+        =semantic_form_for :user_comment, url: create_thread_path(@comment), input_html:{ method: :post } do |f|
+          =f.inputs do
+            =f.input :body, label: false, placeholder: 'コメント', input_html: {rows: 3}, input_html: {autocomplete: "off"}
+            =f.action :submit, label: 'コメントする', as: :button , button_html: {class: 'hide_list pwd-button'}

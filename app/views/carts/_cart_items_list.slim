@@ -1,0 +1,21 @@
+- @order_items.each do |order|
+  .card.mb-3
+    .card-body.bg-offwhite
+      .d-flex.item
+        .item__image
+          = link_to item_path(order.item)
+            - if order.item.images.present?
+              =image_tag order.item.first_image.url(:xsmall), class: 'img-fluid'
+            - else
+              =image_tag 'default_item_image.png', class: 'img-fluid'
+        .ml-3.flex-grow-1
+          .d-flex
+            .checkout__title.headline_color.mr-1 
+              = link_to order.item.name, item_path(order.item)
+            .checkout__title.ml-auto
+              =link_to t('Delete'), cart_item_delete_path(order), method: :delete
+          .checkout__title.headline_color
+            span = t('Size')
+            span.ml-1 = ':' " #{order.size}"
+          .checkout__title.headline_color.mt-4
+            = number_to_currency(order.unit_price, unit: "¥", format: "%u%n", precision: 0)

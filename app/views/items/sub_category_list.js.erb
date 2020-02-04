@@ -1,0 +1,23 @@
+<% if @sub_categories.present? %>
+  $(".js_search_subcategory").empty().trigger('chosen:updated');
+  $('.js_search_subcategory').append($('<option value><%= t('Sub Category') %></option>')).trigger('chosen:updated');
+  <% @sub_categories.each do |sc| %>
+    $('.js_search_subcategory').append($('<option value="<%= sc.id %>"><%= sc.name %></option>')).trigger('chosen:updated');
+    <% if request.referer.split('/').include?('edit')%>
+      <% item = Item.find_by(slug: request.referer.split('/')[6])%>
+      <% if item.present? && (item.sub_category.present? && item.sub_category.id == sc.id) %>
+        $(".js_search_subcategory option").prop('selected', true);
+      <% end %>
+    <% else %>
+      <%subcategory = Rack::Utils.parse_query URI(request.referer).query%>
+      <% subcategory_id = subcategory['search[sub_category]'] %>
+      <% if subcategory_id.present? && subcategory_id.to_i == sc.id %>
+        $(".js_search_subcategory option").prop('selected', true);
+      <% end %>
+    <%end%>
+  <% end %>
+  $(".js_search_subcategory").parent().show();
+<% else %>
+  $(".js_search_subcategory").parent().hide();
+  $(".js_search_subcategory").empty().trigger('chosen:updated');
+<% end %>

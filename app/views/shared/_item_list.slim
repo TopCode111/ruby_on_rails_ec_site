@@ -1,0 +1,22 @@
+div class="#{params[:controller] == 'users' ? '' : "col-md-9 ml-sm-auto col-12 "}"
+  .category__container.items.col-spacing-sm__item-list
+    .row
+      - if items.present?
+        - items.each do |item|
+          .col-sm-3.col-6
+            .item.mb-4
+              =link_to item_path(item) do
+                .item__image
+                  -if item.images.present?
+                    =image_tag item.first_image.url(:medium), class: 'img-fluid'
+                  -else
+                    =image_tag 'default_item_image.png', class: 'img-fluid'
+                .item__name.pt-2
+                  = truncate("#{item.name}")
+                .item__price
+                  = number_to_currency(item.price, unit: "¥", format: "%u%n", precision: 0)
+      - else
+        h3.pl-3
+        = t('No items found')
+
+    = paginate items

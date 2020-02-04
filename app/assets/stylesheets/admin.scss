@@ -1,0 +1,62 @@
+.header #tabs li.current a {
+  background-color: #754DEA;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  &:hover{
+    background-color: #754DEA !important;
+  }
+}
+.header #tabs li a:hover{
+  &:hover{
+    background-color: #ece5ff;
+  }
+}
+body.index #index_footer{
+  font-size: 12px;
+}
+.index_as_table table tbody tr{
+  &:hover{
+    background-color: #ece5ff;
+  }
+}
+table tbody td{
+  padding: 12px;
+}
+.delete_link{
+  background-color: lightcoral !important;
+  &:hover{
+    background-color: #fb9f9f !important;
+  }
+}
+.has_many_remove{
+  background-color: lightcoral !important;
+}
+#admin_user_submit_action{
+  width: 100%;
+}
+.member_link {
+  margin: 3px 0;
+}
+#login {
+  border-top: none;
+}
+.action_item a {
+  margin-bottom: 3px;
+}
+.breadcrumb a{
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+/*Change password button for seller page*/
+.pwd-button{
+  border: 0;
+  background-color: #754DEA;
+  padding: 12px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}

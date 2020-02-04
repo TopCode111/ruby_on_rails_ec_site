@@ -1,0 +1,32 @@
+<% context.instance_eval do
+  attributes_table do
+    row t("Photo") do |r|
+      if r.profile.photo.present?
+        image_tag r.profile.photo.url(:thumb)
+      else
+        image_tag 'default_avatar.png'
+      end
+    end
+    row :email
+    row t('Name') do |r|
+      r.profile.try(:name)
+    end
+    row t("Description") do |r|
+      r.profile.try(:description)
+    end
+    row :hide
+    row :num_of_items
+    row t("instagram_url") do |r|
+      r.profile.try(:instagram_url)
+    end
+    row t("twitter_url") do |r|
+      r.profile.try(:twitter_url)
+    end
+    row t("line_url") do |r|
+      r.profile.try(:line_url)
+    end
+    row t("facebook_url") do |r|
+      r.profile.try(:facebook_url)
+    end
+  end
+end %>

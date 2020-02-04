@@ -1,0 +1,4 @@
+.nested-fields.item_fieldset
+  = f.inputs do
+    = f.input :image, required: true, as: :file, input_html: {class: "js-img-validation"}, label: t('Image')
+    = link_to_remove_association t("remove"), f, class: 'button has_many_remove remove_btn'

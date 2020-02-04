@@ -1,0 +1,69 @@
+@include media-breakpoint-up(sm){
+  .photor__viewport{
+    position: relative;
+
+    .photor{
+      &__viewportLayer,
+      &__thumbs{
+        position: relative;
+      }
+      &__viewportControlPrev{
+        background: asset-url('back.png') no-repeat;
+        right: unset;
+        left: 16px;
+      }
+      &__viewportControlNext{
+        background: asset-url('next.png') no-repeat;
+        right: 16px;
+        left: unset;
+      }
+      &__viewportControlPrev,
+      &__viewportControlNext{
+        height: 40px;
+        width: 40px;
+        background-size: 40px;
+        top: 45%;
+        &._disabled{
+          background: none;
+        }
+      }
+    }
+  }
+  .photor__thumbs{
+    top: unset !important;
+    margin-top: 16px;
+  }
+  .photor__viewport,
+  .photor__thumbs{
+    position: relative !important;
+  }
+  .photor{
+    height: auto !important;
+  }
+}
+@include media-breakpoint-down(sm){
+  .photor__thumbsWrap{
+    img{
+      display: none;
+    }
+  }
+  .photor__thumbs{
+    height: auto !important;
+  }
+  .photor__thumbsWrap{
+    .photor__thumbsWrapItem{
+      height: 8px;
+      width: 8px;
+      background: rgba(34, 34, 34, 0.3);
+      margin: 0 2px;
+      border-radius: $space-s;
+    }
+    .photor__thumbsWrapItem._current{
+      background: $primary;
+    }
+  }
+  .photor__thumbs{
+    top: unset !important;
+    margin-top: 0;
+  }
+}

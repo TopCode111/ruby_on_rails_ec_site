@@ -1,0 +1,30 @@
+.breadcrumb-bar{
+  border-bottom: 1px solid $lightgray;
+  a{
+    padding-bottom: 5px;
+  }
+  li + li{
+  &:before{
+    color: $dark;
+    content: "";
+    background: asset_url('arrow-icon.png') center no-repeat;
+    background-position: left;
+    height: 16px;
+    width: 16px;
+    transform: rotate(-90deg);
+    margin-right: 4px;
+    display:inline-block;
+    margin-left:.5rem;
+  }
+}
+  li {
+    display:inherit;
+  }
+}
+
+@media (max-width: 767px) {
+  .breadcrumb-bar-line {
+    border-bottom: none !important;
+  }
+}
+

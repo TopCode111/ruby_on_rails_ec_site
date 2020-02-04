@@ -1,0 +1,12 @@
+.review{
+  &__info {
+    height: 102px;
+    position: relative;
+    .item-img{
+      position: absolute;
+      top: 21px;
+      left: 20px;
+      bottom: 21px;
+    }
+  }
+}

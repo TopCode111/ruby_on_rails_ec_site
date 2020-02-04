@@ -1,0 +1,84 @@
+=title "購入する "
+=meta_description
+= render "shared/search_bar"
+.container.mt-4.m-20
+  h1
+    = "#{current_user.present? ? t('Confirm input contents') : t('Items in cart')}"
+- if @order_items.present?
+  .container
+    .row.mt-4.checkout
+      .col-md-7.col-12 class="#{current_user.present? ? 'd-none d-md-block' : ''}"
+        = render partial: 'cart_items_list'
+      .col-md-5.col-12
+        .checkout__right.mb-3
+          .d-flex.align-items-baseline
+            .flex-grow-1.headline_color.checkout__title = t('Price')
+            .checkout__headtitle
+              = number_to_currency(@purchase_order.total_sum_price, unit: "¥", format: "%u%n", precision: 0)
+          .d-flex.align-items-baseline.mt-2
+            .flex-grow-1.headline_color.checkout__title = t('Shipping fee')
+            .checkout__headtitle
+              = number_to_currency(@purchase_order.total_shipping_fees, unit: "¥", format: "%u%n", precision: 0)
+          .d-flex.align-items-baseline
+            .flex-grow-1.headline_color.checkout__title = t('Total')
+            .checkout__totalprice
+              span.text-dark
+                = number_to_currency(@purchase_order.final_price, unit: "¥", format: "%u%n", precision: 0)
+              span.checkout__title.ml-2
+                =t('(tax included)')
+          - if user_signed_in?
+            .card.mt-4
+              .card-body.bg-offwhite
+                .d-flex.align-items-baseline
+                  h2.flex-grow-1.headline_color = t('Payment method')
+                  - if current_user.payment_account.present?
+                    = link_to t('Update'),cart_payment_account_edit_path(current_user.payment_account)
+                  -else
+                    = link_to t('Register'),cart_payment_account_new_path
+                - if current_user.payment_account.present?
+                  .d-flex.mt-2
+                    h2.text-dark.font-weight-bold
+                      = current_user.payment_account.card_type.upcase
+                    h2.text-dark
+                      | &nbsp;&nbsp;&nbsp;&nbsp;**** **** **** #{current_user.payment_account.card_no}
+                  h2.headline_color
+                    | Expires&nbsp;&nbsp; #{'%02d' % current_user.payment_account.exp_month} / #{current_user.payment_account.exp_year % 100}
+                -else
+                  .text-danger.mt-2
+                    = t('Payment Method is not registered')
+                hr
+                .d-flex.align-items-baseline
+                  h2.flex-grow-1.headline_color = t('Shipping address')
+                  = link_to "#{current_user.billing_address.present? ? t('Update') : t('Register')}", cart_shipping_address_path
+                - if current_user.billing_address.present?
+                  h2.text-dark.mt-2
+                    = current_user.billing_address.prefecture+current_user.billing_address.address_1+current_user.billing_address.address_2
+                -else
+                  .text-danger.mt-2
+                    = t('The addressee address is not registered')
+                hr
+                .mt-2
+                  = t('※ You can not change payment after order confirmation')
+                =button_to t('Confirm order'), confirm_checkout_path(current_purchase_order.id), :method=> :post, class: "btn btn-lg btn-block js_disable_onclick mt-4 js-checkout_submit #{current_user.payment_account.present? && current_user.billing_address.present? ? 'btn-primary' : 'btn-disable disable-color'}", disabled:!(current_user.payment_account.present? && current_user.billing_address.present?), data: { disable_with: t('Confirm order') }
+            .d-block.d-md-none.mt-4
+              = render partial: 'cart_items_list'
+
+          - else
+            .authentication__container.mt-4.mx-auto
+              = form_for(@user, url: session_path(@user), :html => {"data-parsley-validate" => true}) do |f|
+                .field.form-group
+                  = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t('Email address'), required: '', class: 'form-control mt-3', 'data-parsley-remote' => '/forgot_password_authorization', 'data-parsley-remote-message' => t('This email is invalid')
+                .field
+                  = f.password_field :password, autocomplete: "current-password", placeholder: t('Password'), required: '', class: 'form-control mt-3'
+                .actions
+                  = f.submit t("Login"), class: 'btn btn-primary btn-block mt-3 mb-4 btn-lg', data: { disable_with: t('Login') }
+              = link_to t("Forgot your password"), cart_new_password_path
+              .mt-3.mb-3.split
+                = t('Or')
+              = link_to t("Register"), cart_user_register_path, class: 'btn btn-outline-primary btn-lg btn-block'
+- else
+  .row.cart-items-center
+    .m-auto.col-xs-2
+      =  t("There are no items in cart")
+      = link_to t("Continue Shopping"), root_path, class: "btn btn-primary btn-block mt-3 mb-4 btn-lg"
+

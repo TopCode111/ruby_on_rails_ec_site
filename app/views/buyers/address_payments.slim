@@ -1,0 +1,47 @@
+=title "配送先住所・お支払い"
+=meta_description
+= render "shared/search_bar"
+.container.mt-4
+  .row
+    .col-md-3.d-none.d-md-block.col-0
+      .sidebar
+        = render 'buyers/buyer_side_bar'
+        .category__type.pt-3.pb-3
+          = link_to t("Logout"), destroy_user_session_path, method: :delete
+    .col-md-9.ml-sm-auto.col-12
+      .category__container.items
+        h1.pb-4 = t('Shipping address / payment')
+        .card
+          .card-body.bg-offwhite
+            .d-flex.align-items-baseline
+              h2.flex-grow-1.headline_color = t('Shipping address')
+              = link_to "#{@address.present? ? t('Update') : t('Register')}", shipping_address_path
+            - if @address.present?
+              h2.text-dark.mt-2
+                = @address.prefecture+@address.address_1+@address.address_2
+            -else
+              .text-danger.mt-2
+                = t('The addressee address is not registered')
+
+        .card.mt-3
+          .card-body.bg-offwhite
+            .d-flex.align-items-baseline
+              h2.flex-grow-1.headline_color = t('Payment method')
+              - if @payment.present?
+                = link_to t('Update'),edit_payment_account_path(@payment)
+              -else
+                = link_to t('Register'),new_payment_account_path
+            - if @payment.present?
+              .d-flex.mt-2
+                h2.text-dark.font-weight-bold
+                  = current_user.payment_account.card_type.upcase
+                h2.text-dark
+                  | &nbsp;&nbsp;&nbsp;&nbsp;**** **** **** #{@payment.card_no}
+              h2.headline_color
+                | Expires&nbsp;&nbsp; #{'%02d' % @payment.exp_month} / #{@payment.exp_year % 100}
+            -else
+              .text-danger.mt-2
+                = t('Payment Method is not registered')
+        .d-block.d-md-none
+          .category__type.mt-4.pt-4
+            = render 'buyers/buyer_side_bar'
