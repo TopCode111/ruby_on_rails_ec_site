@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'pry-rails', '~> 0.3.6'
 
-gem 'devise', '~> 4.5'
+gem 'devise', '~> 4.7'
 
 gem 'activeadmin'
 
